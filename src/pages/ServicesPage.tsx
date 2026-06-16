@@ -22,7 +22,7 @@ export default function ServicesPage({ onSelectServiceForQuote, onNavigate }: Se
             Premium <span className="font-extrabold text-white">Concrete Services</span>
           </h1>
           <p className="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto font-light leading-relaxed">
-            Professional site excavations, heavy steel reinforce setup, and pristine decorative aggregates. All built strictly compliant to AS3600 residential building standards.
+            Professional site excavations, heavy steel reinforce setup, and pristine decorative aggregates. All built conforming to AS3600 concrete structures standards.
           </p>
         </div>
       </section>
@@ -122,7 +122,7 @@ export default function ServicesPage({ onSelectServiceForQuote, onNavigate }: Se
               <div className="space-y-2 pt-2 border-t border-brand-border/40 text-[11px] text-brand-text">
                 <div className="flex items-center gap-2">
                   <Layers className="h-3.5 w-3.5 text-zinc-400 shrink-0" />
-                  <span>SL92 Dual Heavy Steel reinforcement</span>
+                  <span>SL82 Dual Heavy Steel reinforcement</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Hammer className="h-3.5 w-3.5 text-zinc-400 shrink-0" />

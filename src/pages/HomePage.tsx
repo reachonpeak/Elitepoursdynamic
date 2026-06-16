@@ -36,7 +36,7 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
           <div className="flex flex-col items-center text-center space-y-2">
             <Hammer className="h-7 w-7 text-[#E1E0CC]" />
             <span className="text-sm font-bold uppercase tracking-wider font-display">Premium Steel Reinforce</span>
-            <span className="text-[10px] text-zinc-400 font-mono">SL82 / SL92 Spec Mesh</span>
+            <span className="text-[10px] text-zinc-400 font-mono">SL72 / SL82 Spec Mesh</span>
           </div>
           <div className="flex flex-col items-center text-center space-y-2">
             <Users className="h-7 w-7 text-[#E1E0CC]" />
@@ -167,17 +167,23 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
             {featuredServices.map((service, index) => (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white border border-brand-border rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col group overflow-hidden"
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ 
+                  type: 'spring', 
+                  stiffness: 60, 
+                  damping: 18, 
+                  delay: index * 0.12,
+                  mass: 0.9
+                }}
+                className="bg-white border border-brand-border rounded-sm shadow-sm hover:shadow-xl hover:border-brand-gold/40 hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col group overflow-hidden transform-gpu"
               >
                 <div className="h-48 relative overflow-hidden bg-zinc-900 border-b border-brand-border">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.04] transform-gpu"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
                   <span className="absolute bottom-4 left-4 font-mono text-[10px] font-bold text-white bg-zinc-950/80 px-2.5 py-1 tracking-wider uppercase rounded-sm border border-white/10">
@@ -186,7 +192,7 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
                 </div>
                 <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
-                    <h3 className="font-display font-bold uppercase text-brand-text text-base leading-snug group-hover:text-black transition-colors">
+                    <h3 className="font-display font-bold uppercase text-brand-text text-base leading-snug group-hover:text-brand-gold transition-colors duration-300">
                       {service.title}
                     </h3>
                     <p className="text-xs text-brand-text-muted leading-relaxed font-light">
@@ -195,7 +201,7 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
                   </div>
                   <button 
                     onClick={() => onNavigate('services')}
-                    className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#161412] flex items-center gap-1.5 group-hover:underline "
+                    className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#161412] flex items-center gap-1.5 group-hover:underline cursor-pointer w-fit"
                   >
                     View Specifications <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                   </button>

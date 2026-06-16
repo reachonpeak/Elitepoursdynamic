@@ -155,7 +155,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
               <div className="flex items-center gap-2 text-[10px] text-brand-text-muted">
                 <ShieldCheck className="h-4.5 w-4.5 text-zinc-900" />
-                <span>VIC CIVIL NO: 75172343</span>
+                <span>Public Liability Insured</span>
               </div>
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Bottom copyright details table */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
           <p className="text-brand-text-muted/80 text-center md:text-left">
-            Copyright © 2026 Elitepour Dynamics - All Rights Reserved. Active under Victoria Civil Concrete Code.
+            Copyright © 2026 Elitepour Dynamics - All Rights Reserved. Conforming to AS3600 Concrete Standards.
           </p>
 
           <div className="flex gap-4 text-brand-text-muted/80 text-[10px] font-mono tracking-wide">

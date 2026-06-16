@@ -142,18 +142,12 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
             >
               <a
                 href="tel:+61455217023"
-                className={`inline-flex items-center gap-2 py-1.5 px-3 rounded-full border transition-all duration-200 group ${
-                  isSolid 
-                    ? 'border-brand-border/40 hover:bg-brand-surface' 
-                    : 'border-white/10 hover:bg-white/5'
-                }`}
+                className="inline-flex items-center gap-2 py-2 px-3.5 sm:py-2.5 sm:px-5 rounded-full bg-[#E07B39] hover:bg-[#B35E24] border border-[#E07B39] text-white shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group"
                 aria-label="Call Elitepour Dynamics"
               >
-                <Phone className="h-3.5 w-3.5 text-brand-accent fill-brand-accent stroke-none group-hover:scale-110 transition-transform" />
-                <span className={`hidden md:inline-block font-sans text-[11px] font-bold tracking-wider transition-colors ${
-                  isSolid ? 'text-brand-text-muted group-hover:text-brand-text' : 'text-white/80 group-hover:text-white'
-                }`}>
-                  +61 455 217 023
+                <Phone className="h-3.5 w-3.5 text-white fill-white stroke-none group-hover:scale-110 transition-transform" />
+                <span className="font-sans text-[10px] sm:text-[11px] font-extrabold tracking-wider text-white uppercase">
+                  Call 0455 217 023
                 </span>
               </a>
             </motion.div>

@@ -131,12 +131,16 @@ const PrismaHero = ({ onEstimatorClick, isInitialLoading = false, loaderStep = 1
             }
           `}} />
           <motion.div 
-            initial={{ filter: "blur(30px)" }}
-            animate={isInitialLoading && loaderStep < 4 ? { filter: "blur(30px)" } : { filter: "blur(0px)" }}
+            initial={{ filter: "blur(30px)", opacity: 0 }}
+            animate={isInitialLoading && loaderStep < 4 ? { filter: "blur(30px)", opacity: 0 } : { filter: "blur(0px)", opacity: 1 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 bg-cover bg-center animate-hero-pan"
-            style={{ backgroundImage: `url('/driveway.jpeg')` }}
-          />
+            className="absolute inset-0 overflow-hidden"
+          >
+            <div 
+              className="w-full h-full bg-cover bg-center animate-hero-pan transform-gpu"
+              style={{ backgroundImage: `url('/driveway.jpeg')` }}
+            />
+          </motion.div>
         </motion.div>
 
         {/* Noise overlay */}

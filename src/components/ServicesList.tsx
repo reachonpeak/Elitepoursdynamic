@@ -48,7 +48,7 @@ export default function ServicesList({ onSelectServiceForQuote, onNavigate }: Se
           </h2>
 
           <p className="text-brand-text-muted text-sm sm:text-base leading-relaxed font-light">
-            From heavy-load industrial residential foundations to gorgeous stone exposed aggregates, every pour receives standard Melbourne council preps and certified craftsmanship.
+            From heavy-load industrial residential foundations to gorgeous stone exposed aggregates, every pour receives standard Melbourne council preps and professional craftsmanship.
           </p>
         </motion.div>
 
@@ -82,19 +82,20 @@ export default function ServicesList({ onSelectServiceForQuote, onNavigate }: Se
                     y: 0, 
                     transition: { 
                       type: 'spring', 
-                      stiffness: 100, 
-                      damping: 15 
+                      stiffness: 70, 
+                      damping: 18,
+                      mass: 0.8
                     } 
                   }
                 }}
-                className="relative overflow-hidden aspect-[4/3] bg-white group cursor-pointer transition-all duration-350"
+                className="relative overflow-hidden aspect-[4/3] bg-white group cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu"
               >
                 {/* Backdrop Image */}
                 <img
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
-                  className="w-full h-full object-cover opacity-70 group-hover:opacity-85 group-hover:scale-105 transition-all duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  className="w-full h-full object-cover opacity-70 group-hover:opacity-85 group-hover:scale-105 transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu"
                 />
 
                 {/* Dark Vignette Overlay */}
@@ -102,7 +103,7 @@ export default function ServicesList({ onSelectServiceForQuote, onNavigate }: Se
 
                 {/* Left Active Accent Border */}
                 <span
-                  className="absolute left-0 top-0 bottom-0 w-[4px] bg-brand-accent transform scale-y-0 origin-bottom group-hover:scale-y-100 transition-transform duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] z-30"
+                  className="absolute left-0 top-0 bottom-0 w-[4px] bg-brand-accent transform scale-y-0 origin-bottom group-hover:scale-y-100 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-30"
                 />
 
                 {/* Card Content Section */}
@@ -117,7 +118,7 @@ export default function ServicesList({ onSelectServiceForQuote, onNavigate }: Se
 
                   {/* Slider Description - expands on hover */}
                   <div
-                    className="overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
                     style={{
                       maxHeight: isHovered ? '110px' : '0px',
                       opacity: isHovered ? 1 : 0,
@@ -169,13 +170,13 @@ export default function ServicesList({ onSelectServiceForQuote, onNavigate }: Se
         >
           <div className="space-y-2">
             <span className="font-display text-xs tracking-widest text-brand-accent font-bold uppercase">
-              MELBOURNE STANDARDS REGISTRY
+              MELBOURNE STANDARDS ALIGNMENT
             </span>
             <h4 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-text tracking-wide">
-              Registered Structural Integrity &amp; Compressive strength
+              Structural Integrity &amp; Compressive strength
             </h4>
             <p className="text-brand-text-muted text-xs sm:text-sm font-light max-w-2xl leading-relaxed">
-              We never compromise on aggregate volume ratios or concrete grading. Elitepour Dynamics provides standard 10,000,000 AUD civil liability registers. All driveways receive standard thick expansion joint cuts.
+              We never compromise on aggregate volume ratios or concrete grading. Elitepour Dynamics maintains a standard $20,000,000 public liability insurance policy. All driveways receive standard thick expansion joint cuts.
             </p>
           </div>
 
@@ -191,7 +192,7 @@ export default function ServicesList({ onSelectServiceForQuote, onNavigate }: Se
             className="group inline-flex items-center gap-3.5 rounded-full bg-[#161412] hover:bg-black text-white py-1.5 pl-6 pr-1.5 text-xs sm:text-sm font-semibold transition-all hover:gap-4.5 cursor-pointer shadow-lg hover:scale-[1.02] active:scale-[0.98] self-center md:self-auto"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            Audit Insurance Certs
+            Request Insurance Details
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:scale-110">
               <ArrowRight className="h-4 w-4 text-black" />
             </span>

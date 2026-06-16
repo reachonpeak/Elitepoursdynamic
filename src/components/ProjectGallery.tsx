@@ -318,7 +318,7 @@ export default function ProjectGallery() {
                 
                 {/* BEFORE IMAGE (Clipped block, stays fully aligned on the left half based on boundary width) */}
                 <div 
-                  className="absolute inset-0 h-full overflow-hidden transition-all duration-75 pointer-events-none z-10"
+                  className="absolute inset-0 h-full overflow-hidden pointer-events-none z-10"
                   style={{ width: `${sliderPosition}%` }}
                 >
                   <img 
@@ -390,12 +390,17 @@ export default function ProjectGallery() {
                 layout
                 id={`project-${project.id}`}
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35, ease: 'easeInOut' }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 40 }}
+                transition={{ 
+                  type: 'spring', 
+                  stiffness: 60, 
+                  damping: 18, 
+                  mass: 0.9 
+                }}
                 onClick={() => setSelectedProject(project)}
-                className="group bg-white border border-brand-border rounded-sm h-[380px] flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                className="group bg-white border border-brand-border rounded-sm h-[380px] flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-gold/40 hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer transform-gpu"
               >
                 {/* Thumb frame */}
                 <div className="relative h-[250px] w-full overflow-hidden bg-brand-text/5 shrink-0">
@@ -403,7 +408,7 @@ export default function ProjectGallery() {
                     src={project.image}
                     alt={project.title}
                     referrerPolicy="no-referrer"
-                    className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="h-full w-full object-cover group-hover:scale-[1.04] transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu"
                   />
                   
                   {/* Category bubble */}
@@ -464,10 +469,10 @@ export default function ProjectGallery() {
             </div>
             <div className="text-left">
               <h4 className="font-display font-bold uppercase text-brand-text tracking-wide text-md leading-none mb-1">
-                Victorian Structurally Compliant Concrete Pours
+                High-Strength Concrete Structure Alignment
               </h4>
               <p className="text-brand-text-muted text-[11px] font-sans">
-                All driveways, deep-footing crossovers, retaining walls, and load slabs shown above comply with AS3600 (Concrete Structures) civil parameters.
+                All driveways, deep-footing crossovers, retaining walls, and load slabs shown above conform to AS3600 (Concrete Structures) design parameters.
               </p>
             </div>
           </div>
@@ -499,7 +504,7 @@ export default function ProjectGallery() {
               initial={{ opacity: 0, y: 32, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 32, scale: 0.98 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+              transition={{ type: 'spring', damping: 28, stiffness: 120, mass: 0.9 }}
               className="bg-white border border-brand-border rounded-sm w-full max-w-5xl shadow-2xl relative z-10 overflow-hidden flex flex-col lg:flex-row max-h-[90vh] lg:max-h-[85vh]"
             >
               {/* Top-Right Absolute Close element */}

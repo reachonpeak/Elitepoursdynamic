@@ -28,7 +28,7 @@ export const servicesData: Service[] = [
     image: '/service4.webp',
     basePricePerSqm: 125,
     specs: [
-      'Engineered SL82/SL92 reinforcement mesh',
+      'Engineered SL72/SL82 reinforcement mesh',
       'F4 class rigid engineered formwork',
       'Precision laser-levelled tolerance within +-2mm',
       'Moisture vapor barrier installation'
@@ -115,7 +115,7 @@ export const processSteps: ProcessStep[] = [
     stepNumber: 4,
     title: 'Steel Reinforcement Installation',
     tagline: 'Tensile Strength That Never Fails',
-    desc: 'Concrete holds great compressive strength, but requires steel reinforcement to withstand high bending or heavy loads. We lay premium Australian SL82 or SL92 engineered steel concrete mesh supported on high-chairs so it sits perfectly in the center third of the slab.'
+    desc: 'Concrete holds great compressive strength, but requires steel reinforcement to withstand high bending or heavy loads. We lay premium Australian SL62, SL72, or SL82 engineered steel concrete mesh supported on high-chairs so it sits perfectly in the center third of the slab.'
   },
   {
     stepNumber: 5,

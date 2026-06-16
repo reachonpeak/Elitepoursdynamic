@@ -179,7 +179,7 @@ export const caseStudiesData: CaseStudy[] = [
     clientBrief: 'Demolish an unsafe, cracked old domestic asphalt crossover and pour a robust, reinforced concrete crossover that complies perfectly with City of Whittlesea crossover engineering standards. The crossover needed to support constant heavy delivery trucks.',
     engineeringChallenge: 'The crossover bounds a high-tilt main road with complex utility channels (gas, water, and fiber optical cables) running barely 300mm below the concrete excavation scrape level.',
     solutionSpecs: [
-      'Obtained Whittlesea Council Crossover permit and registered dialed asset protections.',
+      'Obtained Whittlesea Council Crossover permit and conducted Dial Before You Dig utility mapping inquiries.',
       'Used precise hand-shoveling to locate and safeguard the underlying telecom conduit lines.',
       'Constructed full timber expansion joint boundaries separating council curb from private driveway boundary.',
     ],

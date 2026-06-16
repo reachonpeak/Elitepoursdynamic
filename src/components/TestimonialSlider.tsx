@@ -159,7 +159,7 @@ export default function TestimonialSlider() {
           className="text-center mt-8 bg-brand-surface border border-brand-border p-5 rounded-sm flex flex-col sm:flex-row justify-between items-center gap-4 shadow-sm"
         >
           <div className="flex items-center gap-2">
-            <span className="text-brand-text-muted text-xs sm:text-sm font-sans">Our pride shows in every driveway. Examine our active Google certification map coordinates.</span>
+            <span className="text-brand-text-muted text-xs sm:text-sm font-sans">Our pride shows in every driveway. Examine our active Google reviews map coordinates.</span>
           </div>
           
           <a

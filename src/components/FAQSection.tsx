@@ -35,7 +35,7 @@ export default function FAQSection() {
       id: 'faq-timeline',
       category: 'timeline',
       question: 'What is the step-by-step project timeline from excavation to final completion?',
-      answer: 'A standard driveway or residential concrete slab installation averages 3 to 5 clear working days. Day 1 focuses on machine excavation, grading, and compacting the base stone substrate. Day 2 is centered on building rigid structural formwork and anchoring steel reinforcement mesh (such as SL82/SL92 panels) on bar chairs. Day 3 is the direct engineered concrete pour, screeding, and aggregate washing. Days 4 and 5 are dedicated to stress relief joint cutting, acid washing, and protective sealing.',
+      answer: 'A standard driveway or residential concrete slab installation averages 3 to 5 clear working days. Day 1 focuses on machine excavation, grading, and compacting the base stone substrate. Day 2 is centered on building rigid structural formwork and anchoring steel reinforcement mesh (such as SL62/SL72/SL82 panels) on bar chairs. Day 3 is the direct engineered concrete pour, screeding, and aggregate washing. Days 4 and 5 are dedicated to stress relief joint cutting, acid washing, and protective sealing.',
     },
     {
       id: 'faq-cracks',
@@ -50,10 +50,10 @@ export default function FAQSection() {
       answer: 'Our experienced directors actively track local Melbourne BOM weather radars with maximum accuracy. If high precipitation thresholds are predicted, we will proactively reschedule the concrete pour to prevent washaway damage. If light, unforeseen rain begins, we carry heavy-duty waterproof poly-tarpaulins to cover and isolate the curing concrete surface immediately, preserving the structural design parameters and surface texture.',
     },
     {
-      id: 'faq-licensing',
+      id: 'faq-quality-safety',
       category: 'quality',
-      question: 'Are you licensed to handle structural civil works under Victorian regulations?',
-      answer: 'Yes. Elitepour Dynamics is structured in strict alignment with Victorian building protocols and concrete structures standards (AS 3600). We hold a $20M civil public liability insurance policy, and every on-site supervisor maintains comprehensive certifications for heavy machinery machinery handling, steel reinforcement design, and decorative concrete applications.',
+      question: 'How do you ensure structural quality and safety in your projects?',
+      answer: 'Elitepour Dynamics aligns every project with Victorian building regulations and concrete structures standards (AS 3600). We hold a $20M civil public liability insurance policy, and our supervisors maintain certifications for machine operations, steel reinforcement setup, and architectural finishes, ensuring professional, safe, and code-compliant installations.',
     },
   ];
 
@@ -77,14 +77,15 @@ export default function FAQSection() {
   };
 
   const listItemVariants = {
-    hidden: { opacity: 0, y: 15 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0, 
       transition: { 
         type: 'spring', 
-        stiffness: 110, 
-        damping: 15 
+        stiffness: 70, 
+        damping: 18,
+        mass: 0.8
       } 
     }
   };
@@ -209,7 +210,7 @@ export default function FAQSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                       className="overflow-hidden border-t border-brand-border/30 bg-brand-surface/20"
                     >
                       <div className="p-5 sm:p-6 pl-12 sm:pl-14 text-xs sm:text-sm text-brand-text-muted leading-relaxed font-light font-sans space-y-3">
