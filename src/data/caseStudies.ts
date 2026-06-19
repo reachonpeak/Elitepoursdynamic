@@ -31,7 +31,7 @@ export const caseStudiesData: CaseStudy[] = [
     subtitle: 'Bespoke Charcoal Granite Exposed Aggregate',
     location: 'Toorak, VIC 3142',
     category: 'Exposed Aggregate',
-    image: '/service2.webp',
+    image: '/images/gallery/gallery-19.jpg',
     aspectRatio: 'aspect-[3/4]', // Tall for masonry layout variety
     metrics: [
       { label: 'Total Area', value: '240 sqm' },
@@ -66,7 +66,7 @@ export const caseStudiesData: CaseStudy[] = [
     subtitle: 'Alabaster Honed Seamless Concrete Decking',
     location: 'Brighton, VIC 3186',
     category: 'Honed Concrete',
-    image: '/rs=w_370,cg_true,m1.webp',
+    image: '/images/gallery/gallery-09.jpg',
     aspectRatio: 'aspect-[4/3]', // Wide
     metrics: [
       { label: 'Total Area', value: '115 sqm' },
@@ -100,7 +100,7 @@ export const caseStudiesData: CaseStudy[] = [
     subtitle: 'Mirror-Gloss Diamond Polished Internal Flooring',
     location: 'Fitzroy, VIC 3065',
     category: 'Polished Internal',
-    image: '/rs=w_370,cg_true,m2.webp',
+    image: '/images/gallery/gallery-15.jpg',
     aspectRatio: 'aspect-square', // Neutral square
     metrics: [
       { label: 'Total Area', value: '95 sqm' },
@@ -134,7 +134,7 @@ export const caseStudiesData: CaseStudy[] = [
     subtitle: 'Architectural Off-Form Structural Retaining Structure',
     location: 'Templestowe, VIC 3106',
     category: 'Architectural Retaining',
-    image: '/service1.webp',
+    image: '/images/gallery/gallery-18.jpg',
     aspectRatio: 'aspect-[3/4]', // Tall
     metrics: [
       { label: 'Wall Length', value: '45 meters' },
@@ -168,7 +168,7 @@ export const caseStudiesData: CaseStudy[] = [
     subtitle: 'High-Strength Municipality Crossover & Curb',
     location: 'Wollert, VIC 3750',
     category: 'Civil Concrete',
-    image: '/5.webp',
+    image: '/images/services/civil-footpaths.jpg',
     aspectRatio: 'aspect-[16/10]', // Wide landscape
     metrics: [
       { label: 'Total Area', value: '45 sqm' },

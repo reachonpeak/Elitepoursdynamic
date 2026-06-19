@@ -53,7 +53,7 @@ export default function FAQSection() {
       id: 'faq-quality-safety',
       category: 'quality',
       question: 'How do you ensure structural quality and safety in your projects?',
-      answer: 'Elitepour Dynamics aligns every project with Victorian building regulations and concrete structures standards (AS 3600). We hold a $20M civil public liability insurance policy, and our supervisors maintain certifications for machine operations, steel reinforcement setup, and architectural finishes, ensuring professional, safe, and code-compliant installations.',
+      answer: 'Elite Pour Dynamics aligns every project with Victorian building regulations and concrete structures standards (AS 3600). We hold a $20M civil public liability insurance policy, and our supervisors maintain certifications for machine operations, steel reinforcement setup, and architectural finishes, ensuring professional, safe, and code-compliant installations.',
     },
   ];
 

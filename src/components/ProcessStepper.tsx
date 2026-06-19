@@ -30,13 +30,13 @@ export default function ProcessStepper() {
           <div className="inline-flex items-center gap-2.5 mb-4">
             <span className="block w-5 h-[2px] bg-brand-accent" />
             <span className="font-display text-[11px] sm:text-xs tracking-[0.25em] text-brand-accent uppercase font-bold">
-              Rigidity &amp; Engineering
+              How We Work
             </span>
           </div>
 
           <h2 className="font-display font-black text-4xl sm:text-5xl uppercase tracking-tight text-brand-text leading-none mb-4">
-            Our 7-Stage Masonry <br />
-            Pouring Framework
+            Our <br />
+            Process
           </h2>
 
           <p className="text-brand-text-muted text-sm sm:text-base leading-relaxed font-light">

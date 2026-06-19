@@ -29,7 +29,7 @@ export default function FloatingCall() {
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           href="tel:+61455217023"
           className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 z-40 group flex h-12 items-center justify-center gap-2.5 rounded-full bg-[#E07B39] hover:bg-[#B35E24] text-white px-5 shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border border-white/10 cursor-pointer"
-          aria-label="Call Elitepour Dynamics"
+          aria-label="Call Elite Pour Dynamics"
           id="floating-call-btn"
         >
           <Phone className="h-4.5 w-4.5 text-white fill-white stroke-none group-hover:rotate-12 transition-transform duration-300" />

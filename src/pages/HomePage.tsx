@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Shield, Hammer, Users, Star } from 'lucide-react';
 import { PrismaHero } from '../components/ui/prisma-hero';
-import { servicesData, testimonialsData } from '../data/websiteData';
+import { servicesData, testimonialsData, aboutCopy } from '../data/websiteData';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -58,27 +58,27 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
             
             <div className="lg:col-span-5 space-y-6">
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-brand-text/50">
-                Melbourne Premium Concreting
+                About Us
               </span>
               <h2 className="text-4xl md:text-5xl font-display font-medium tracking-tight text-[#161412] uppercase leading-[0.95]">
-                Engineering <br className="hidden md:inline" />
-                <span className="font-extrabold text-[#161412]">Ground Integrity</span>
+                About <br className="hidden md:inline" />
+                <span className="font-extrabold text-[#161412]">Elite Pour Dynamics</span>
               </h2>
               <p className="text-brand-text-muted text-sm sm:text-base font-light leading-relaxed">
-                Elitepour Dynamics is Melbourne's premium crew of concrete specialists. Headquartered in the Wollert precinct, we combine advanced engineering calculations, rigid formwork setup, heavy-duty reinforcing steel, and supreme concrete aggregate mixtures to pour pavements built for decades of constant loading.
+                Discover durable concrete for all construction needs. Enhance your property with our expert masonry services and quality materials.
               </p>
-              <div className="space-y-3 pt-2">
-                {[
-                  'Engineered Class 3 structural roadbase compacted to refusal',
-                  'Rigid steel-reinforced concrete piers for sub-grade support',
-                  'Double-layer heavy-duty reinforcement on vehicular zones',
-                  'Vapor barrier standard and expansion contraction cuts control'
-                ].map((spec, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="h-4.5 w-4.5 text-[#161412] shrink-0" />
-                    <span className="text-xs sm:text-sm font-medium text-brand-text">{spec}</span>
-                  </div>
-                ))}
+              <div className="pt-2">
+                <span className="text-xs font-mono font-bold tracking-widest uppercase text-brand-text/50 block mb-3">
+                  {aboutCopy.visionHeading}
+                </span>
+                <div className="space-y-3">
+                  {aboutCopy.vision.map((point, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <CheckCircle2 className="h-4.5 w-4.5 text-[#161412] shrink-0" />
+                      <span className="text-xs sm:text-sm font-medium text-brand-text">{point}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -147,11 +147,11 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div className="space-y-4">
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-brand-text/50">
-                Our Capabilities
+                What We Do
               </span>
               <h2 className="text-4xl md:text-5xl font-display font-medium tracking-tight text-[#161412] uppercase leading-[0.95]">
-                Specialized <br className="hidden md:inline" />
-                <span className="font-extrabold text-[#161412]">Pour Solutions</span>
+                Our Concrete <br className="hidden md:inline" />
+                <span className="font-extrabold text-[#161412]">Services</span>
               </h2>
             </div>
             <button 
@@ -244,8 +244,8 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
               className="md:col-span-7 group relative h-[420px] rounded-sm overflow-hidden border border-brand-border bg-zinc-950 cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
             >
               <img 
-                src="/driveway.jpeg" 
-                alt="Exposed Aggregate Driveway Wollert" 
+                src="/images/gallery/gallery-01.jpg"
+                alt="Exposed Aggregate Driveway Wollert"
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-102 transition-all duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -276,8 +276,8 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
                 className="group relative h-[197px] rounded-sm overflow-hidden border border-brand-border bg-zinc-950 cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
               >
                 <img 
-                  src="/service2.webp" 
-                  alt="High-Gloss Epoxy Garage Floor" 
+                  src="/images/gallery/gallery-02.jpg"
+                  alt="High-Gloss Epoxy Garage Floor"
                   className="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
@@ -298,8 +298,8 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
                 className="group relative h-[197px] rounded-sm overflow-hidden border border-brand-border bg-zinc-950 cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
               >
                 <img 
-                  src="/service1.webp" 
-                  alt="Concrete Retaining Wall" 
+                  src="/images/gallery/gallery-03.jpg"
+                  alt="Concrete Retaining Wall"
                   className="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
@@ -330,7 +330,7 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
             </div>
             <div className="space-y-6 max-w-3xl relative z-10">
               <span className="text-brand-accent font-display text-[10px] tracking-[0.3em] font-bold uppercase block">
-                Latest Client Feedback
+                See what others are saying about Elite Pour Dynamics!
               </span>
               <div className="flex gap-1">
                 {[...Array(topFeedback.rating)].map((_, i) => (

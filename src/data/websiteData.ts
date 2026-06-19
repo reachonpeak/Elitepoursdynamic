@@ -8,10 +8,10 @@ import { Service, ProcessStep, Testimonial } from '../types';
 export const servicesData: Service[] = [
   {
     id: 'exposed-aggregate',
-    title: 'Exposed Aggregate Concrete',
+    title: 'Exposed Aggregate',
     shortDesc: 'Premium concrete combining durability with a decorative natural stone finish.',
     fullDesc: 'Premium exposed aggregate concrete that combines durability with a decorative natural stone finish. Ideal for driveways, pathways, patios and outdoor areas, it provides a strong, slip-resistant surface that enhances the appearance and value of your property while ensuring long-lasting performance.',
-    image: '/service3.webp',
+    image: '/images/services/exposed-aggregate.jpg',
     basePricePerSqm: 110,
     specs: [
       'High-durability decorative stone mix',
@@ -25,7 +25,7 @@ export const servicesData: Service[] = [
     title: 'Residential Slabs',
     shortDesc: 'Strong and reliable residential concrete slabs built with proper base preparation.',
     fullDesc: 'Strong and reliable residential concrete slabs built with proper base preparation, reinforcement and high-quality concrete. Ideal for new homes, extensions and sheds, providing a stable foundation designed for durability, structural strength and long-term performance.',
-    image: '/service4.webp',
+    image: '/images/services/residential-slabs.jpg',
     basePricePerSqm: 125,
     specs: [
       'Engineered SL72/SL82 reinforcement mesh',
@@ -36,10 +36,10 @@ export const servicesData: Service[] = [
   },
   {
     id: 'epoxy-flooring',
-    title: 'High-Performance Epoxy Flooring',
+    title: 'Epoxy',
     shortDesc: 'Seamless, protective coatings designed for durability, protection, and a modern finish.',
-    fullDesc: 'Elitepour Dynamics provides high-quality epoxy flooring solutions designed for durability, protection, and a modern finish. Epoxy coatings create a seamless, strong surface that is resistant to stains, chemicals, moisture, and heavy traffic, making it ideal for garages, workshops, warehouses, and commercial spaces. Our team ensures proper surface preparation and professional application to deliver a flawless finish.',
-    image: '/service2.webp',
+    fullDesc: 'Elite Pour Dynamics provides high-quality epoxy flooring solutions designed for durability, protection, and a modern finish. Epoxy coatings create a seamless, strong surface that is resistant to stains, chemicals, moisture, and heavy traffic, making it ideal for garages, workshops, warehouses, and commercial spaces. Our team ensures proper surface preparation and professional application to deliver a flawless finish.',
+    image: '/images/services/epoxy.jpg',
     basePricePerSqm: 85,
     specs: [
       'Industrial-grade self-levelling polyurethane/epoxy base',
@@ -50,10 +50,10 @@ export const servicesData: Service[] = [
   },
   {
     id: 'retaining-walls',
-    title: 'Concrete Retaining Walls',
+    title: 'Retaining Walls',
     shortDesc: 'High-quality concrete retaining walls providing structural support and aesthetic appeal.',
-    fullDesc: 'Elitepour Dynamics specialises in constructing high-quality concrete retaining walls that provide both structural support and aesthetic appeal. Our retaining walls are built with proper reinforcement and drainage to ensure durability and stability for years to come.',
-    image: '/service1.webp',
+    fullDesc: 'Elite Pour Dynamics specialises in constructing high-quality concrete retaining walls that provide both structural support and aesthetic appeal. Our retaining walls are built with proper reinforcement and drainage to ensure durability and stability for years to come.',
+    image: '/images/gallery/gallery-18.jpg',
     basePricePerSqm: 220,
     specs: [
       'Core-filled blockwork or reinforced columns',
@@ -64,10 +64,10 @@ export const servicesData: Service[] = [
   },
   {
     id: 'stamped-concrete',
-    title: 'Stamped Concrete (Patterned)',
+    title: 'Stamped Concrete',
     shortDesc: 'Decorative stamped concrete replicating natural stone, brick or tile.',
     fullDesc: 'Decorative stamped concrete designed to replicate the look of natural stone, brick or tile while providing the strength of concrete. Ideal for driveways, patios and outdoor areas, offering a durable, low-maintenance surface that enhances the style and value of your property.',
-    image: '/service5.webp',
+    image: '/images/services/stamped-concrete.jpg',
     basePricePerSqm: 95,
     specs: [
       'Precision interlocking texture stamp molds',
@@ -78,10 +78,10 @@ export const servicesData: Service[] = [
   },
   {
     id: 'civil-footpaths',
-    title: 'Civil Footpaths & Crossovers',
+    title: 'Civil Footpaths',
     shortDesc: 'Professional council-standard concrete footpaths constructed to meet local regulations.',
     fullDesc: 'Professional council-standard concrete footpaths constructed to meet local regulations and safety requirements. Built with proper base preparation and quality concrete to ensure durability, smooth finish and long-term performance for public walkways and residential crossovers.',
-    image: '/5.webp',
+    image: '/images/services/civil-footpaths.jpg',
     basePricePerSqm: 80,
     specs: [
       'Built in strict accordance with municipal guidelines',
@@ -107,7 +107,7 @@ export const processSteps: ProcessStep[] = [
   },
   {
     stepNumber: 3,
-    title: 'Formwork Structural Setup',
+    title: 'Formwork Setup',
     tagline: 'The Definitive Mold of Integrity',
     desc: 'Heavy-duty timber or steel F4 form rails are anchored using deep reinforced timber pegs, aligning precisely with structural survey markers to contain the wet concrete and direct slopes correctly.'
   },
@@ -119,7 +119,7 @@ export const processSteps: ProcessStep[] = [
   },
   {
     stepNumber: 5,
-    title: 'The Concrete Pour',
+    title: 'Concrete Pouring',
     tagline: 'Pristine Material Integration',
     desc: 'High-strength premium concrete (minimum 25MPa to 32MPa spec) is laid uniformly from concrete agitator trucks. Air pockets are vibrated out to eliminate structural honeycombs and ensure a dense, solid mix.'
   },
@@ -131,7 +131,7 @@ export const processSteps: ProcessStep[] = [
   },
   {
     stepNumber: 7,
-    title: 'Curing & Protection Sealing',
+    title: 'Curing & Sealing',
     tagline: 'Sealing the Deal for Decades',
     desc: 'We apply professional curing retardants to regulate moisture evaporation, preventing early micro-cracking, and follow with two applications of supreme acrylic sealer to protect the concrete against hot-tire marks, oil spill staining, and harsh Australian UV fading.'
   }
@@ -142,9 +142,9 @@ export const testimonialsData: Testimonial[] = [
     id: 'rev-1',
     author: 'Karan Khara',
     date: '19/05/2026',
-    text: 'We recently hired Elitepour Dynamics for our project in Melbourne. Absolute professionals from start to finish! The communication was excellent, the base preparation was incredibly thorough, and the final exposed aggregate driveway looks outstanding. Highly recommend their skilled team for anyone looking for premium, long-lasting concrete work.',
+    text: 'We recently hired Elite Pour Dynamics for our project in Melbourne. Absolute professionals from start to finish! The communication was excellent, the base preparation was incredibly thorough, and the final exposed aggregate driveway looks outstanding. Highly recommend their skilled team for anyone looking for premium, long-lasting concrete work.',
     rating: 5,
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80',
+    avatarUrl: '/images/reviews/avatar-1.png',
     verified: true
   },
   {
@@ -153,31 +153,84 @@ export const testimonialsData: Testimonial[] = [
     date: '17/05/2026',
     text: 'They did a fantastic job at our property installing beautiful clean pathways. They arrived on time, completed the excavation quickly without making unnecessary mess, and put strong reinforcement steel everywhere. The team was extremely reliable and our yard has never looked better. Professional concrete specialists!',
     rating: 5,
-    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&h=120&q=80',
+    avatarUrl: '/images/reviews/avatar-2.png',
     verified: true
   },
   {
     id: 'rev-3',
     author: 'Happy Manes',
     date: '17/05/2026',
-    text: 'We recently had high-gloss epoxy flooring done at our new double-garage in Wollert by Elitepour Dynamics. The surface preparation has been done to absolute perfection, filling every tiny hairline crack beforehand. The epoxy flake finish is smooth, dust-free, oil-resistant and incredibly beautiful. Top tier customer satisfaction!',
+    text: 'We recently had high-gloss epoxy flooring done at our new double-garage in Wollert by Elite Pour Dynamics. The surface preparation has been done to absolute perfection, filling every tiny hairline crack beforehand. The epoxy flake finish is smooth, dust-free, oil-resistant and incredibly beautiful. Top tier customer satisfaction!',
     rating: 5,
-    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80',
+    avatarUrl: '/images/reviews/avatar-3.png',
     verified: true
   }
 ];
 
 export const businessDetails = {
-  name: 'Elitepour Dynamics',
+  name: 'Elite Pour Dynamics',
   phone: '+61 455 217 023',
   phoneRaw: 'tel:+61455217023',
   email: 'info@elitepourdynamics.com.au',
   emailRaw: 'mailto:info@elitepourdynamics.com.au',
   address: 'Melbourne, Victoria, Australia',
   operatingHours: 'Mon - Sun: 09:00 am – 06:00 pm',
-  googleMapsUrl: 'https://www.google.com/maps/place/Elitepour+dynamics/@-37.5910535,144.9989454,19.92z/data=!4m8!3m7!1s0x6ad64dac0ac363d1:0x8fd5c6ae8e89b955!8m2!3d-37.5935919!4d144.9985881!9m1!1b1!16s%2Fg%2F11xmr5ljzf?entry=ttu&g_ep=EgoyMDI2MDYxMC4wIKXMDSoASAFQAw%3D%3D',
+  googleMapsUrl: 'https://maps.google.com/maps?cid=10364408570481064277',
   social: {
     facebook: 'https://www.facebook.com/751723431350413',
     instagram: 'https://www.instagram.com/elitepourdynamics?igsh=MXhzZWF4MnhiN3U2YQ=='
   }
+};
+
+/* -------------------------------------------------------------------------- */
+/*  Verbatim site copy (elitepourdynamics.com.au)                             */
+/*  Headings and body text reproduced exactly as published on the live site. */
+/* -------------------------------------------------------------------------- */
+
+export const heroCopy = {
+  heading: 'Premium Concrete Driveways & Exposed Aggregate in Melbourne',
+  subheading: 'High-quality driveways, house slabs, footpaths and decorative concrete built to last.',
+  primaryCta: 'CALL NOW',
+  secondaryCta: 'GET FREE QUOTE',
+};
+
+export const aboutCopy = {
+  heading: 'About Elite Pour Dynamics',
+  visionHeading: 'Our Vision',
+  vision: [
+    'Deliver High-Quality Workmanship',
+    'Build Long-Lasting Concrete Solutions',
+    'Maintain Professional & Reliable Service',
+    'Focus on Precision and Attention to Detail',
+    'Become a Trusted Concrete Company in Melbourne',
+  ],
+  whyHeading: 'Why choose us?',
+  whyChooseUs: [
+    'Fully Insured',
+    'Quality Workmanship',
+    'Experienced Concrete Specialists',
+    'Reliable & Professional Service',
+    'Premium Materials',
+    'Customer Satisfaction',
+  ],
+};
+
+export const sectionHeadings = {
+  process: 'Our Process',
+  gallery: 'Admire the Skillful Masonry Works of Elite Pour Dynamics in Our Gallery',
+  services: 'Our concrete services',
+  reviews: 'See what others are saying about Elite Pour Dynamics!',
+  contact: 'Contact Us',
+};
+
+export const contactCopy = {
+  heading: 'Contact Us',
+  quoteHeading: 'Get a Free Quote!',
+  inPersonHeading: 'Better yet, see us in person!',
+  inPersonText: 'We stay in constant communication with our customers until the job is done. To get a free quote, or if you have questions or special requests, just drop us a line.',
+};
+
+export const reviewSummary = {
+  rating: '5.0',
+  count: '11 Reviews',
 };

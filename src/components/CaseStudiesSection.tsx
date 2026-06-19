@@ -141,7 +141,7 @@ export default function CaseStudiesSection() {
             ★ Premium Structural Standards &amp; Quality Assured ★
           </p>
           <p className="text-[#161412] text-xs sm:text-sm font-light max-w-2xl mx-auto leading-relaxed">
-            Elitepour Dynamics builds every custom driveway, crossover, and structural element using top-tier materials and construction protocols. Fully conforming with standard Australian concrete guidelines (AS3600).
+            Elite Pour Dynamics builds every custom driveway, crossover, and structural element using top-tier materials and construction protocols. Fully conforming with standard Australian concrete guidelines (AS3600).
           </p>
         </div>
       </div>

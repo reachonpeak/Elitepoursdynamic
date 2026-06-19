@@ -66,7 +66,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <div 
           className="absolute inset-0 bg-cover bg-center animate-hero-pan"
-          style={{ backgroundImage: `url('/driveway.jpeg')` }}
+          style={{ backgroundImage: `url('/images/hero-1.jpg')` }}
         />
         {/* Layered vignette masking */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#0F0E0D]/98 via-[#0F0E0D]/80 to-[#0F0E0D]/95 z-10" />

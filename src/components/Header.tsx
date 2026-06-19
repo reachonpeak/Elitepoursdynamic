@@ -77,13 +77,13 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
             >
               <img
                 src="/logo.png"
-                alt="Elitepour Dynamics Logo"
+                alt="Elite Pour Dynamics Logo"
                 className="h-10 w-10 sm:h-11 sm:w-11 object-contain border border-brand-accent/25 rounded-full group-hover:border-brand-accent/60 transition-colors shrink-0"
               />
               <div className={`font-display font-black text-lg sm:text-xl tracking-wider uppercase leading-none transition-colors ${
                 isSolid ? 'text-brand-text group-hover:text-brand-accent' : 'text-white group-hover:text-brand-accent'
               }`}>
-                Elitepour
+                Elite Pour
                 <span className="block text-[8px] sm:text-[9px] tracking-[0.28em] text-brand-accent font-semibold mt-1 transition-colors group-hover:text-brand-accent-dark">
                   Dynamics
                 </span>
@@ -143,7 +143,7 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
               <a
                 href="tel:+61455217023"
                 className="inline-flex items-center gap-2 py-2 px-3.5 sm:py-2.5 sm:px-5 rounded-full bg-[#E07B39] hover:bg-[#B35E24] border border-[#E07B39] text-white shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group"
-                aria-label="Call Elitepour Dynamics"
+                aria-label="Call Elite Pour Dynamics"
               >
                 <Phone className="h-3.5 w-3.5 text-white fill-white stroke-none group-hover:scale-110 transition-transform" />
                 <span className="font-sans text-[10px] sm:text-[11px] font-extrabold tracking-wider text-white uppercase">
@@ -291,7 +291,7 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
             className="h-9 w-9 object-contain filter invert"
           />
           <span className="font-display font-black text-[9px] tracking-[0.25em] uppercase text-white">
-            Elitepour Dynamics
+            Elite Pour Dynamics
           </span>
         </div>
       </div>

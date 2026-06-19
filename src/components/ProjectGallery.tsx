@@ -25,8 +25,8 @@ const projectsData: ProjectItem[] = [
     title: 'Wollert Exclusive Exposed Aggregate Driveway',
     category: 'driveways',
     location: 'Wollert, VIC 3750',
-    image: '/driveway.jpeg',
-    beforeImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80', // raw subgrade base excavation
+    image: '/images/gallery/gallery-01.jpg',
+    beforeImage: '/images/gallery/gallery-20.jpg',
     dimensions: '180 sqm',
     completion: 'March 2026',
     specs: [
@@ -43,7 +43,7 @@ const projectsData: ProjectItem[] = [
     title: 'High-Gloss Flake Epoxy Double Garage Floor',
     category: 'epoxy',
     location: 'Wollert, VIC 3750',
-    image: '/service2.webp',
+    image: '/images/gallery/gallery-02.jpg',
     dimensions: '42 sqm',
     completion: 'April 2026',
     specs: [
@@ -60,7 +60,7 @@ const projectsData: ProjectItem[] = [
     title: 'Reinforced Concrete Retaining Boundary Wall',
     category: 'masonry',
     location: 'Craigieburn, VIC 3064',
-    image: '/service1.webp',
+    image: '/images/gallery/gallery-03.jpg',
     dimensions: '22m long x 1.4m high',
     completion: 'May 2026',
     specs: [
@@ -76,7 +76,7 @@ const projectsData: ProjectItem[] = [
     title: 'Textured Stamped Flagstone Patio & BBQ Crossover',
     category: 'driveways',
     location: 'South Morang, VIC 3752',
-    image: '/service5.webp',
+    image: '/images/gallery/gallery-04.jpg',
     dimensions: '65 sqm',
     completion: 'April 2026',
     specs: [
@@ -92,7 +92,7 @@ const projectsData: ProjectItem[] = [
     title: 'Heavy Machinery Base Slab & Foundation',
     category: 'slabs',
     location: 'Campbellfield Industrial Park, VIC 3061',
-    image: '/service4.webp',
+    image: '/images/gallery/gallery-05.jpg',
     dimensions: '120 sqm',
     completion: 'February 2026',
     specs: [
@@ -108,7 +108,7 @@ const projectsData: ProjectItem[] = [
     title: 'Council Standard Suburban Crossover & Kerb Repair',
     category: 'slabs',
     location: 'Epping, VIC 3076',
-    image: '/5.webp',
+    image: '/images/gallery/gallery-06.jpg',
     dimensions: '35 sqm',
     completion: 'January 2026',
     specs: [
@@ -124,7 +124,7 @@ const projectsData: ProjectItem[] = [
     title: 'Wollert Textured Stamped Driveway',
     category: 'driveways',
     location: 'Wollert, VIC 3750',
-    image: '/rs=w_370,cg_true,m4.webp',
+    image: '/images/gallery/gallery-07.jpg',
     dimensions: '85 sqm',
     completion: 'May 2026',
     specs: [
@@ -139,7 +139,7 @@ const projectsData: ProjectItem[] = [
     title: 'Epping Exposed Aggregate Footpath',
     category: 'driveways',
     location: 'Epping, VIC 3076',
-    image: '/rs=w_370,cg_true,m88.webp',
+    image: '/images/gallery/gallery-08.jpg',
     dimensions: '45 sqm',
     completion: 'June 2026',
     specs: [
@@ -311,8 +311,8 @@ export default function ProjectGallery() {
               >
                 {/* AFTER IMAGE (Default base, stays fully visible on the right half) */}
                 <img 
-                  src="/driveway.jpeg"
-                  alt="Finished Exposed Aggregate driveway in Wollert" 
+                  src="/images/gallery/gallery-01.jpg"
+                  alt="Finished Exposed Aggregate driveway in Wollert"
                   className="absolute inset-0 h-full w-full object-cover pointer-events-none"
                 />
                 
@@ -322,8 +322,8 @@ export default function ProjectGallery() {
                   style={{ width: `${sliderPosition}%` }}
                 >
                   <img 
-                    src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
-                    alt="Excavation and subbase prep stage" 
+                    src="/images/gallery/gallery-20.jpg"
+                    alt="Excavation and subbase prep stage"
                     className="absolute inset-y-0 left-0 h-full object-cover pointer-events-none"
                     style={{ width: `${containerWidth}px`, maxWidth: 'none', height: '100%' }}
                   />

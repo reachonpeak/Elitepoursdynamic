@@ -16,13 +16,13 @@ export default function ServicesPage({ onSelectServiceForQuote, onNavigate }: Se
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(225,224,204,0.06),transparent_60%)] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-4 relative z-10 font-sans">
           <span className="text-[#E1E0CC] font-mono text-[10px] tracking-[0.3em] font-bold uppercase">
-            Melbourne Concrete Specialists
+            What We Do
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-medium tracking-tight uppercase leading-none text-[#E1E0CC]">
-            Premium <span className="font-extrabold text-white">Concrete Services</span>
+            Our <span className="font-extrabold text-white">Concrete Services</span>
           </h1>
           <p className="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto font-light leading-relaxed">
-            Professional site excavations, heavy steel reinforce setup, and pristine decorative aggregates. All built conforming to AS3600 concrete structures standards.
+            Retaining walls, epoxy, exposed aggregate, residential slabs, stamped concrete and civil footpaths — durable concrete solutions built to last across Melbourne.
           </p>
         </div>
       </section>

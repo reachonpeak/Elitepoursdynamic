@@ -23,13 +23,13 @@ export default function ContactPage({
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(225,224,204,0.06),transparent_60%)] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-4 relative z-10">
           <span className="text-[#E1E0CC] font-mono text-[10px] tracking-[0.3em] font-bold uppercase">
-            Start Your Construction File
+            Get a Free Quote!
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-medium tracking-tight uppercase leading-none text-[#E1E0CC]">
-            Request An <span className="font-extrabold text-white">On-Site Measurement</span>
+            Contact <span className="font-extrabold text-white">Us</span>
           </h1>
           <p className="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto font-light leading-relaxed">
-            Fill out our dynamic construction request desk below. Our coordinators review your sizing constraints, evaluate soil classifications, and schedule direct on-site measurements.
+            We stay in constant communication with our customers until the job is done. To get a free quote, or if you have questions or special requests, just drop us a line.
           </p>
         </div>
       </section>

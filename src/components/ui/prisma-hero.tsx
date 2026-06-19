@@ -138,7 +138,7 @@ const PrismaHero = ({ onEstimatorClick, isInitialLoading = false, loaderStep = 1
           >
             <div 
               className="w-full h-full bg-cover bg-center animate-hero-pan transform-gpu"
-              style={{ backgroundImage: `url('/driveway.jpeg')` }}
+              style={{ backgroundImage: `url('/images/hero-1.jpg')` }}
             />
           </motion.div>
         </motion.div>
@@ -196,7 +196,7 @@ const PrismaHero = ({ onEstimatorClick, isInitialLoading = false, loaderStep = 1
                 className="text-xs text-[#E1E0CC]/80 sm:text-sm md:text-base font-light text-left leading-[1.25]"
                 style={{ color: "rgba(225, 224, 204, 0.8)", lineHeight: 1.25, fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                Elitepour Dynamics is Melbourne's premium crew of concrete specialists, pouring perfection. We craft high-quality residential slabs, premium exposed aggregate driveways, and structural block retaining walls engineered to last.
+                High-quality driveways, house slabs, footpaths and decorative concrete built to last.
               </motion.p>
 
               {/* Pill Button precisely aligned to the layout design */}

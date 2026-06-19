@@ -43,12 +43,12 @@ export default function ServicesList({ onSelectServiceForQuote, onNavigate }: Se
           </div>
 
           <h2 className="font-display font-black text-4xl sm:text-5xl uppercase tracking-tight text-brand-text leading-none mb-4">
-            Our Premium <br />
-            Concrete Services
+            Our Concrete <br />
+            Services
           </h2>
 
           <p className="text-brand-text-muted text-sm sm:text-base leading-relaxed font-light">
-            From heavy-load industrial residential foundations to gorgeous stone exposed aggregates, every pour receives standard Melbourne council preps and professional craftsmanship.
+            From retaining walls and epoxy flooring to exposed aggregate, residential slabs, stamped concrete and civil footpaths — explore our full range of concrete services across Melbourne.
           </p>
         </motion.div>
 
@@ -170,13 +170,13 @@ export default function ServicesList({ onSelectServiceForQuote, onNavigate }: Se
         >
           <div className="space-y-2">
             <span className="font-display text-xs tracking-widest text-brand-accent font-bold uppercase">
-              MELBOURNE STANDARDS ALIGNMENT
+              WHY CHOOSE US?
             </span>
             <h4 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-text tracking-wide">
-              Structural Integrity &amp; Compressive strength
+              Fully Insured &amp; Quality Workmanship
             </h4>
             <p className="text-brand-text-muted text-xs sm:text-sm font-light max-w-2xl leading-relaxed">
-              We never compromise on aggregate volume ratios or concrete grading. Elitepour Dynamics maintains a standard $20,000,000 public liability insurance policy. All driveways receive standard thick expansion joint cuts.
+              Fully insured, experienced concrete specialists delivering reliable and professional service with premium materials and complete customer satisfaction.
             </p>
           </div>
 
@@ -192,7 +192,7 @@ export default function ServicesList({ onSelectServiceForQuote, onNavigate }: Se
             className="group inline-flex items-center gap-3.5 rounded-full bg-[#161412] hover:bg-black text-white py-1.5 pl-6 pr-1.5 text-xs sm:text-sm font-semibold transition-all hover:gap-4.5 cursor-pointer shadow-lg hover:scale-[1.02] active:scale-[0.98] self-center md:self-auto"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            Request Insurance Details
+            Get a Free Quote
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:scale-110">
               <ArrowRight className="h-4 w-4 text-black" />
             </span>

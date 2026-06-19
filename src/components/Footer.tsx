@@ -33,17 +33,17 @@ export default function Footer({ onNavigate }: FooterProps) {
               <a href="#/" onClick={(e) => handleLinkClick(e, 'home')} className="flex items-center gap-3">
                 <img
                   src="/logo.png"
-                  alt="Elitepour Dynamics Logo"
+                  alt="Elite Pour Dynamics Logo"
                   className="h-8 w-8 object-contain border border-brand-accent/20 rounded-full"
                 />
                 <span className="font-display font-black text-lg tracking-wider text-brand-text uppercase">
-                  ELITEPOUR <span className="text-brand-gold">DYNAMICS</span>
+                  ELITE POUR <span className="text-brand-gold">DYNAMICS</span>
                 </span>
               </a>
             </div>
 
             <p className="text-xs sm:text-sm text-brand-text-muted leading-relaxed max-w-sm font-light">
-              Melbourne's leading independent concrete installation firm. We combine specialized heavy machinery, premium steel reinforcement structures, and engineered concrete mixtures to pour pavements built for decades of point loading.
+              High-quality driveways, house slabs, footpaths and decorative concrete built to last.
             </p>
 
             {/* Social Icons row */}
@@ -155,7 +155,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
               <div className="flex items-center gap-2 text-[10px] text-brand-text-muted">
                 <ShieldCheck className="h-4.5 w-4.5 text-zinc-900" />
-                <span>Public Liability Insured</span>
+                <span>Fully Insured</span>
               </div>
             </div>
           </div>
@@ -165,13 +165,13 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Bottom copyright details table */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
           <p className="text-brand-text-muted/80 text-center md:text-left">
-            Copyright © 2026 Elitepour Dynamics - All Rights Reserved. Conforming to AS3600 Concrete Standards.
+            Copyright © 2026 Elite Pour Dynamics - All Rights Reserved.
           </p>
 
           <div className="flex gap-4 text-brand-text-muted/80 text-[10px] font-mono tracking-wide">
-            <p>GoDaddy Redesign Template</p>
+            <p>Mon – Sun: 09:00 am – 06:00 pm</p>
             <span>•</span>
-            <p>VIC Structural Compliant</p>
+            <p>Melbourne, VIC</p>
           </div>
         </div>
 
