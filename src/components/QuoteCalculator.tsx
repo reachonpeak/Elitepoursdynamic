@@ -28,7 +28,7 @@ export default function QuoteCalculator({
   const [length, setLength] = useState<number>(12);
   const [directArea, setDirectArea] = useState<number>(42);
   const [thickness, setThickness] = useState<100 | 125 | 150>(100);
-  const [reinforcement, setReinforcement] = useState<'standard' | 'double' | 'heavy-duty'>('standard');
+  const [reinforcement, setReinforcement] = useState<'sl62' | 'sl72' | 'sl82' | 'sl92'>('sl82');
   const [excavation, setExcavation] = useState<boolean>(true);
   const [sleeperType, setSleeperType] = useState<'wooden' | 'concrete'>('concrete');
 
@@ -58,8 +58,9 @@ export default function QuoteCalculator({
       if (thickness === 125) ratePerSqm *= 1.15;
       else if (thickness === 150) ratePerSqm *= 1.35;
 
-      if (reinforcement === 'double') ratePerSqm += 12;
-      else if (reinforcement === 'heavy-duty') ratePerSqm += 25;
+      if (reinforcement === 'sl72') ratePerSqm += 8;
+      else if (reinforcement === 'sl82') ratePerSqm += 12;
+      else if (reinforcement === 'sl92') ratePerSqm += 25;
 
       if (excavation) ratePerSqm += 15;
     }
@@ -95,7 +96,7 @@ ${areaLine}
 - Service Selected: ${service.title}
 ${areaLine}
 - Concrete Thickness: ${thickness}mm
-- Reinforcement Mesh: ${reinforcement.toUpperCase()} steel grading
+- Reinforcement Mesh: ${reinforcement.toUpperCase()} steel mesh
 - Excavation / Base Preparation Required: ${excavation ? 'Yes' : 'No'}
 - Automatic Preliminary Estimate: $${estMin.toLocaleString()} - $${estMax.toLocaleString()} AUD`;
 
@@ -396,13 +397,13 @@ ${areaLine}
                       <div className="group relative">
                         <HelpCircle className="h-3.5 w-3.5 text-brand-text-dim cursor-help" />
                         <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 bg-brand-text text-[10px] p-2.5 rounded-sm text-white font-sans shadow-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-50">
-                          Steel mesh bonds the pour to handle ground temperatures without cracking. We use standard premium SL82/SL92 mesh.
+                          Steel mesh bonds the pour to handle ground temperatures without cracking. Options: SL62, SL72, SL82, SL92.
                         </span>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-2">
-                      {(['standard', 'double', 'heavy-duty'] as const).map((r) => (
+                    <div className="grid grid-cols-4 gap-2">
+                      {(['sl62', 'sl72', 'sl82', 'sl92'] as const).map((r) => (
                         <button
                           key={r}
                           onClick={() => setReinforcement(r)}
@@ -412,7 +413,7 @@ ${areaLine}
                               : 'border-brand-border bg-white text-brand-text-muted hover:text-brand-text'
                           }`}
                         >
-                          {r === 'standard' ? 'SL82' : r === 'double' ? 'SL92' : 'SL92 Dbl'}
+                          {r.toUpperCase()}
                         </button>
                       ))}
                     </div>
@@ -527,7 +528,7 @@ ${areaLine}
                     </div>
                     <div className="flex justify-between">
                       <span className="text-brand-text-muted">Steel mesh size:</span>
-                      <span className="font-semibold text-brand-text uppercase">{reinforcement === 'standard' ? 'SL82' : reinforcement === 'double' ? 'SL92' : 'SL92 Dbl'}</span>
+                      <span className="font-semibold text-brand-text uppercase">{reinforcement.toUpperCase()}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-brand-text-muted">Exc prep:</span>
