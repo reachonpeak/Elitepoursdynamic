@@ -30,6 +30,7 @@ export default function QuoteCalculator({
   const [thickness, setThickness] = useState<100 | 125 | 150>(100);
   const [reinforcement, setReinforcement] = useState<'standard' | 'double' | 'heavy-duty'>('standard');
   const [excavation, setExcavation] = useState<boolean>(true);
+  const [sleeperType, setSleeperType] = useState<'wooden' | 'concrete'>('concrete');
 
   // States for calculated totals
   const [calculatedArea, setCalculatedArea] = useState<number>(42);
@@ -44,35 +45,29 @@ export default function QuoteCalculator({
     const service = servicesData.find(s => s.id === selectedServiceId);
     if (!service) return;
 
-    // Calculations based on concrete cost factors
     let ratePerSqm = service.basePricePerSqm;
 
-    // Thickness multiplier
-    if (thickness === 125) {
-      ratePerSqm *= 1.15;
-    } else if (thickness === 150) {
-      ratePerSqm *= 1.35;
-    }
+    if (selectedServiceId === 'retaining-walls') {
+      // Sleeper type modifier
+      if (sleeperType === 'wooden') ratePerSqm *= 0.85;
+      else ratePerSqm *= 1.0; // concrete sleepers = base rate
+    } else if (selectedServiceId === 'epoxy-flooring') {
+      // Epoxy: no modifiers
+    } else {
+      // Standard concrete services
+      if (thickness === 125) ratePerSqm *= 1.15;
+      else if (thickness === 150) ratePerSqm *= 1.35;
 
-    // Steel reinforcing additions
-    if (reinforcement === 'double') {
-      ratePerSqm += 12;
-    } else if (reinforcement === 'heavy-duty') {
-      ratePerSqm += 25;
-    }
+      if (reinforcement === 'double') ratePerSqm += 12;
+      else if (reinforcement === 'heavy-duty') ratePerSqm += 25;
 
-    // Excavation costs per sqm
-    if (excavation) {
-      ratePerSqm += 15;
+      if (excavation) ratePerSqm += 15;
     }
 
     const baseCost = area * ratePerSqm;
-    const roundedMin = Math.round(baseCost * 0.95);
-    const roundedMax = Math.round(baseCost * 1.12);
-
-    setEstMin(roundedMin);
-    setEstMax(roundedMax);
-  }, [selectedServiceId, inputMode, width, length, directArea, thickness, reinforcement, excavation]);
+    setEstMin(Math.round(baseCost * 0.95));
+    setEstMax(Math.round(baseCost * 1.12));
+  }, [selectedServiceId, inputMode, width, length, directArea, thickness, reinforcement, excavation, sleeperType]);
 
   const applyPreset = (w: number, l: number) => {
     setInputMode('dimensions');
@@ -84,9 +79,21 @@ export default function QuoteCalculator({
     const service = servicesData.find(s => s.id === selectedServiceId);
     if (!service) return;
 
-    const detailsText = `Calculated Estimate details:
+    const areaLine = `- Area Sizing: ${calculatedArea} sqm (${inputMode === 'dimensions' ? `${width}m x ${length}m` : 'Direct input'})`;
+    const detailsText = isRetainingWall
+      ? `Calculated Estimate details:
 - Service Selected: ${service.title}
-- Area Sizing: ${calculatedArea} sqm (${inputMode === 'dimensions' ? `${width}m x ${length}m` : 'Direct input'})
+${areaLine}
+- Sleeper Type: ${sleeperType === 'wooden' ? 'Wooden Sleepers' : 'Concrete Sleepers'}
+- Automatic Preliminary Estimate: $${estMin.toLocaleString()} - $${estMax.toLocaleString()} AUD`
+      : isEpoxy
+      ? `Calculated Estimate details:
+- Service Selected: ${service.title}
+${areaLine}
+- Automatic Preliminary Estimate: $${estMin.toLocaleString()} - $${estMax.toLocaleString()} AUD`
+      : `Calculated Estimate details:
+- Service Selected: ${service.title}
+${areaLine}
 - Concrete Thickness: ${thickness}mm
 - Reinforcement Mesh: ${reinforcement.toUpperCase()} steel grading
 - Excavation / Base Preparation Required: ${excavation ? 'Yes' : 'No'}
@@ -109,6 +116,9 @@ export default function QuoteCalculator({
       });
     }
   };
+
+  const isRetainingWall = selectedServiceId === 'retaining-walls';
+  const isEpoxy = selectedServiceId === 'epoxy-flooring';
 
   const selectedService = servicesData.find(s => s.id === selectedServiceId) || servicesData[0];
 
@@ -317,98 +327,126 @@ export default function QuoteCalculator({
               </div>
             </div>
 
-            {/* Step 3: Project Depth & Reinforcing Mesh specs */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-brand-border/40">
-              
-              {/* Thickness Selector */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-1.5">
-                  <label className="text-[10px] font-semibold text-brand-accent uppercase tracking-[0.2em] block">
-                    3. Concrete Thickness
-                  </label>
-                  <div className="group relative">
-                    <HelpCircle className="h-3.5 w-3.5 text-brand-text-dim cursor-help" />
-                    <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 bg-brand-text text-[10px] p-2.5 rounded-sm text-white font-sans shadow-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-50">
-                      Standard walkways/patios use 100mm. Regular vehicle driveways require 125mm. Heavy point load machinery requires 150mm.
-                    </span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-3 gap-2">
-                  {[100, 125, 150].map((t) => (
+            {/* Step 3+: Service-specific options */}
+            {isRetainingWall && (
+              <div className="pt-6 border-t border-brand-border/40 space-y-3">
+                <label className="text-[10px] font-semibold text-brand-accent uppercase tracking-[0.2em] block">
+                  3. Sleeper Type
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  {(['wooden', 'concrete'] as const).map((s) => (
                     <button
-                      key={t}
-                      onClick={() => setThickness(t as 100 | 125 | 150)}
-                      className={`py-2 px-1 rounded-sm text-xs font-bold font-mono text-center border transition-all cursor-pointer ${
-                        thickness === t
+                      key={s}
+                      onClick={() => setSleeperType(s)}
+                      className={`py-3 px-4 rounded-sm text-xs font-bold font-mono text-center border transition-all cursor-pointer ${
+                        sleeperType === s
                           ? 'border-brand-accent bg-brand-accent/5 text-brand-text'
                           : 'border-brand-border bg-white text-brand-text-muted hover:text-brand-text'
                       }`}
                     >
-                      {t}mm
+                      {s === 'wooden' ? 'Wooden Sleepers' : 'Concrete Sleepers'}
                     </button>
                   ))}
                 </div>
               </div>
+            )}
 
-              {/* Steel Reinforcement Mesh Selector */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-1.5">
-                  <label className="text-[10px] font-semibold text-brand-accent uppercase tracking-[0.2em] block">
-                    4. Steel Mesh grade
-                  </label>
-                  <div className="group relative">
-                    <HelpCircle className="h-3.5 w-3.5 text-brand-text-dim cursor-help" />
-                    <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 bg-brand-text text-[10px] p-2.5 rounded-sm text-white font-sans shadow-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-50">
-                      Steel mesh bonds the pour to handle ground temperatures without cracking. We use standard premium SL82/SL92 mesh.
-                    </span>
+            {!isRetainingWall && !isEpoxy && (
+              <>
+                {/* Step 3: Project Depth & Reinforcing Mesh specs */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-brand-border/40">
+
+                  {/* Thickness Selector */}
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-1.5">
+                      <label className="text-[10px] font-semibold text-brand-accent uppercase tracking-[0.2em] block">
+                        3. Concrete Thickness
+                      </label>
+                      <div className="group relative">
+                        <HelpCircle className="h-3.5 w-3.5 text-brand-text-dim cursor-help" />
+                        <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 bg-brand-text text-[10px] p-2.5 rounded-sm text-white font-sans shadow-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                          Standard walkways/patios use 100mm. Regular vehicle driveways require 125mm. Heavy point load machinery requires 150mm.
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2">
+                      {[100, 125, 150].map((t) => (
+                        <button
+                          key={t}
+                          onClick={() => setThickness(t as 100 | 125 | 150)}
+                          className={`py-2 px-1 rounded-sm text-xs font-bold font-mono text-center border transition-all cursor-pointer ${
+                            thickness === t
+                              ? 'border-brand-accent bg-brand-accent/5 text-brand-text'
+                              : 'border-brand-border bg-white text-brand-text-muted hover:text-brand-text'
+                          }`}
+                        >
+                          {t}mm
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Steel Reinforcement Mesh Selector */}
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-1.5">
+                      <label className="text-[10px] font-semibold text-brand-accent uppercase tracking-[0.2em] block">
+                        4. Steel Mesh Size
+                      </label>
+                      <div className="group relative">
+                        <HelpCircle className="h-3.5 w-3.5 text-brand-text-dim cursor-help" />
+                        <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 bg-brand-text text-[10px] p-2.5 rounded-sm text-white font-sans shadow-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                          Steel mesh bonds the pour to handle ground temperatures without cracking. We use standard premium SL82/SL92 mesh.
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2">
+                      {(['standard', 'double', 'heavy-duty'] as const).map((r) => (
+                        <button
+                          key={r}
+                          onClick={() => setReinforcement(r)}
+                          className={`py-2 px-1 rounded-sm text-[10px] uppercase font-bold font-mono text-center border transition-all cursor-pointer ${
+                            reinforcement === r
+                              ? 'border-brand-accent bg-brand-accent/5 text-brand-text'
+                              : 'border-brand-border bg-white text-brand-text-muted hover:text-brand-text'
+                          }`}
+                        >
+                          {r === 'standard' ? 'SL82' : r === 'double' ? 'SL92' : 'SL92 Dbl'}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2">
-                  {(['standard', 'double', 'heavy-duty'] as const).map((r) => (
-                    <button
-                      key={r}
-                      onClick={() => setReinforcement(r)}
-                      className={`py-2 px-0.5 rounded-sm text-[9px] uppercase font-bold font-mono text-center border transition-all cursor-pointer ${
-                        reinforcement === r
-                          ? 'border-brand-accent bg-brand-accent/5 text-brand-text'
-                          : 'border-brand-border bg-white text-brand-text-muted hover:text-brand-text'
-                      }`}
-                    >
-                      {r === 'standard' ? 'SL82 Std' : r === 'double' ? 'SL92 Mid' : 'SL92 Dbl'}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+                {/* Excavation Prep check */}
+                <div className="pt-6 border-t border-brand-border/40 flex items-center justify-between">
+                  <div className="space-y-1 pr-4">
+                    <span className="text-[10px] font-semibold text-brand-accent uppercase tracking-[0.2em] block">
+                      5. Exc. / Prep Grading
+                    </span>
+                    <span className="text-xs text-brand-text-muted block leading-relaxed font-light">
+                      Required if the soil target features existing grass, concrete demolition or site leveling base.
+                    </span>
+                  </div>
 
-            {/* Excavation Prep check */}
-            <div className="pt-6 border-t border-brand-border/40 flex items-center justify-between">
-              <div className="space-y-1 pr-4">
-                <span className="text-[10px] font-semibold text-brand-accent uppercase tracking-[0.2em] block">
-                  5. Exc. / Prep Grading
-                </span>
-                <span className="text-xs text-brand-text-muted block leading-relaxed font-light">
-                  Required if the soil target features existing grass, concrete demolition or site leveling base.
-                </span>
-              </div>
-              
-              <button
-                onClick={() => setExcavation(!excavation)}
-                className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                  excavation ? 'bg-brand-accent' : 'bg-brand-border'
-                }`}
-                role="switch"
-                aria-checked={excavation}
-              >
-                <span
-                  className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                    excavation ? 'translate-x-5' : 'translate-x-0'
-                  }`}
-                />
-              </button>
-            </div>
+                  <button
+                    onClick={() => setExcavation(!excavation)}
+                    className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                      excavation ? 'bg-brand-accent' : 'bg-brand-border'
+                    }`}
+                    role="switch"
+                    aria-checked={excavation}
+                  >
+                    <span
+                      className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                        excavation ? 'translate-x-5' : 'translate-x-0'
+                      }`}
+                    />
+                  </button>
+                </div>
+              </>
+            )}
 
           </motion.div>
 
@@ -437,10 +475,18 @@ export default function QuoteCalculator({
                   <span className="text-[9px] text-brand-text-muted block font-mono uppercase tracking-wider">Surface Area Range</span>
                   <span className="text-3xl font-display font-black text-brand-text">{calculatedArea} <span className="text-xs font-mono font-normal text-brand-text-muted">SQM</span></span>
                 </div>
-                <div className="text-right">
-                  <span className="text-[9px] text-brand-text-muted block font-mono uppercase tracking-wider">Estimated Thickness</span>
-                  <span className="text-brand-text font-display font-bold text-lg">{thickness}mm</span>
-                </div>
+                {!isRetainingWall && !isEpoxy && (
+                  <div className="text-right">
+                    <span className="text-[9px] text-brand-text-muted block font-mono uppercase tracking-wider">Estimated Thickness</span>
+                    <span className="text-brand-text font-display font-bold text-lg">{thickness}mm</span>
+                  </div>
+                )}
+                {isRetainingWall && (
+                  <div className="text-right">
+                    <span className="text-[9px] text-brand-text-muted block font-mono uppercase tracking-wider">Sleeper Type</span>
+                    <span className="text-brand-text font-display font-bold text-sm capitalize">{sleeperType === 'wooden' ? 'Wooden' : 'Concrete'}</span>
+                  </div>
+                )}
               </div>
 
               {/* Preliminary Pricing big badge */}
@@ -467,18 +513,28 @@ export default function QuoteCalculator({
                   <span className="text-brand-text-muted">Service Target:</span>
                   <span className="font-semibold text-right text-brand-text">{selectedService.title}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-brand-text-muted">Concrete Volume:</span>
-                  <span className="font-semibold text-brand-text">{Math.round(calculatedArea * (thickness / 1000) * 10) / 10} m³</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-brand-text-muted">Steel mesh grade:</span>
-                  <span className="font-semibold text-brand-text uppercase">{reinforcement} steel mesh</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-brand-text-muted">Exc prep:</span>
-                  <span className="font-semibold text-brand-accent">{excavation ? 'Required' : 'Plain Overlay'}</span>
-                </div>
+                {isRetainingWall && (
+                  <div className="flex justify-between">
+                    <span className="text-brand-text-muted">Sleeper Type:</span>
+                    <span className="font-semibold text-brand-text capitalize">{sleeperType === 'wooden' ? 'Wooden Sleepers' : 'Concrete Sleepers'}</span>
+                  </div>
+                )}
+                {!isRetainingWall && !isEpoxy && (
+                  <>
+                    <div className="flex justify-between">
+                      <span className="text-brand-text-muted">Concrete Volume:</span>
+                      <span className="font-semibold text-brand-text">{Math.round(calculatedArea * (thickness / 1000) * 10) / 10} m³</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-brand-text-muted">Steel mesh size:</span>
+                      <span className="font-semibold text-brand-text uppercase">{reinforcement === 'standard' ? 'SL82' : reinforcement === 'double' ? 'SL92' : 'SL92 Dbl'}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-brand-text-muted">Exc prep:</span>
+                      <span className="font-semibold text-brand-accent">{excavation ? 'Required' : 'Plain Overlay'}</span>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Dynamic conversion CTA */}
