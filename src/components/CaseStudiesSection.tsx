@@ -17,6 +17,7 @@ import {
   Cpu
 } from 'lucide-react';
 import { caseStudiesData, CaseStudy } from '../data/caseStudies';
+import LazyImage from './LazyImage';
 
 export default function CaseStudiesSection() {
   const [selectedCase, setSelectedCase] = useState<CaseStudy | null>(null);
@@ -56,11 +57,11 @@ export default function CaseStudiesSection() {
             >
               {/* Image Frame with Smooth Zoom Effect on Hover */}
               <div className="relative overflow-hidden bg-zinc-900 shrink-0">
-                <img
+                <LazyImage
                   src={project.image}
                   alt={project.title}
-                  referrerPolicy="no-referrer"
-                  className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]"
+                  className="w-full"
+                  imgClassName="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
                 
@@ -164,11 +165,12 @@ export default function CaseStudiesSection() {
 
               {/* Case Visual Left Display Frame (40% width) */}
               <div className="relative w-full md:w-[40%] bg-zinc-900 overflow-hidden flex flex-col justify-between h-[250px] md:h-auto min-h-[250px]">
-                <img
+                <LazyImage
                   src={selectedCase.image}
                   alt={selectedCase.title}
-                  referrerPolicy="no-referrer"
-                  className="absolute inset-0 h-full w-full object-cover opacity-85"
+                  className="absolute inset-0 h-full w-full"
+                  imgClassName="absolute inset-0 h-full w-full object-cover opacity-85"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/50" />
                 

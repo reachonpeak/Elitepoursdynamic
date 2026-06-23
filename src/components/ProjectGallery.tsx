@@ -15,6 +15,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { ProjectItem } from '../types';
+import LazyImage from './LazyImage';
 
 // Concrete projects portfolio matching actual Melbourne operations
 const projectsData: ProjectItem[] = [
@@ -447,10 +448,11 @@ export default function ProjectGallery() {
                 onMouseLeave={() => setIsResizing(false)}
               >
                 {/* AFTER IMAGE (Default base, stays fully visible on the right half) */}
-                <img 
+                <LazyImage 
                   src="/images/driveway_slider_after.jpg"
                   alt="Finished Stamped Slate driveway layout" 
-                  className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+                  className="absolute inset-0 h-full w-full pointer-events-none"
+                  imgClassName="h-full w-full object-cover pointer-events-none"
                 />
                 
                 {/* BEFORE IMAGE (Clipped block, stays fully aligned on the left half based on boundary width) */}
@@ -534,11 +536,11 @@ export default function ProjectGallery() {
                 onClick={() => { setSelectedProject(project); setShowBefore(false); }}
                 className="group bg-white border border-brand-border rounded-sm overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer aspect-[4/3] relative"
               >
-                <img
+                <LazyImage
                   src={project.image}
                   alt={project.title}
-                  referrerPolicy="no-referrer"
-                  className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full"
+                  imgClassName="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </motion.div>
             ))}
@@ -616,11 +618,12 @@ export default function ProjectGallery() {
 
               {/* Photo display panel */}
               <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-brand-text/5 overflow-hidden flex items-center justify-center">
-                <img
+                <LazyImage
                   src={showBefore && selectedProject.beforeImage ? selectedProject.beforeImage : selectedProject.image}
                   alt={selectedProject.title}
-                  referrerPolicy="no-referrer"
-                  className="h-full w-full object-cover transition-all duration-300"
+                  className="w-full h-full"
+                  imgClassName="h-full w-full object-cover transition-all duration-300"
+                  loading="eager"
                 />
 
                 {/* Before/After stage toggles when beforeImage exists */}
