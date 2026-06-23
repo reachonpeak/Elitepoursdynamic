@@ -30,13 +30,13 @@ export default function ProcessStepper() {
           <div className="inline-flex items-center gap-2.5 mb-4">
             <span className="block w-5 h-[2px] bg-brand-accent" />
             <span className="font-display text-[11px] sm:text-xs tracking-[0.25em] text-brand-accent uppercase font-bold">
-              How We Work
+              Rigidity &amp; Engineering
             </span>
           </div>
 
           <h2 className="font-display font-black text-4xl sm:text-5xl uppercase tracking-tight text-brand-text leading-none mb-4">
-            Our <br />
-            Process
+            Our 7-Stage Masonry <br />
+            Pouring Framework
           </h2>
 
           <p className="text-brand-text-muted text-sm sm:text-base leading-relaxed font-light">
@@ -96,7 +96,7 @@ export default function ProcessStepper() {
                   initial={{ opacity: 0, x: 15 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -15 }}
-                  transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="space-y-4 flex flex-col h-full justify-between"
                 >
                   {/* Background badge indicator */}
@@ -128,7 +128,7 @@ export default function ProcessStepper() {
               <div className="flex items-center justify-between border-t border-brand-border/40 pt-6 mt-8 z-10">
                 <div className="flex items-center gap-2 text-brand-text-muted font-mono text-[10px]">
                   <Timer className="h-4 w-4 text-brand-accent" />
-                  <span>QUALITY SUPERVISED DAILY</span>
+                  <span>COMPLIANCE SUPERVISED DAILY</span>
                 </div>
 
                 <div className="flex gap-2">

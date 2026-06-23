@@ -28,7 +28,7 @@ export default function QuoteCalculator({
   const [length, setLength] = useState<number>(12);
   const [directArea, setDirectArea] = useState<number>(42);
   const [thickness, setThickness] = useState<100 | 125 | 150>(100);
-  const [reinforcement, setReinforcement] = useState<'sl62' | 'sl72' | 'sl82'>('sl72');
+  const [reinforcement, setReinforcement] = useState<'standard' | 'double' | 'heavy-duty'>('standard');
   const [excavation, setExcavation] = useState<boolean>(true);
 
   // States for calculated totals
@@ -55,9 +55,9 @@ export default function QuoteCalculator({
     }
 
     // Steel reinforcing additions
-    if (reinforcement === 'sl72') {
+    if (reinforcement === 'double') {
       ratePerSqm += 12;
-    } else if (reinforcement === 'sl82') {
+    } else if (reinforcement === 'heavy-duty') {
       ratePerSqm += 25;
     }
 
@@ -360,13 +360,13 @@ export default function QuoteCalculator({
                   <div className="group relative">
                     <HelpCircle className="h-3.5 w-3.5 text-brand-text-dim cursor-help" />
                     <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 bg-brand-text text-[10px] p-2.5 rounded-sm text-white font-sans shadow-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-50">
-                      Steel mesh bonds the pour to handle ground temperatures without cracking. We use standard premium SL62/SL72/SL82 mesh.
+                      Steel mesh bonds the pour to handle ground temperatures without cracking. We use standard premium SL82/SL92 mesh.
                     </span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-2">
-                  {(['sl62', 'sl72', 'sl82'] as const).map((r) => (
+                  {(['standard', 'double', 'heavy-duty'] as const).map((r) => (
                     <button
                       key={r}
                       onClick={() => setReinforcement(r)}
@@ -376,7 +376,7 @@ export default function QuoteCalculator({
                           : 'border-brand-border bg-white text-brand-text-muted hover:text-brand-text'
                       }`}
                     >
-                      {r === 'sl62' ? 'SL62 Light' : r === 'sl72' ? 'SL72 Std' : 'SL82 Heavy'}
+                      {r === 'standard' ? 'SL82 Std' : r === 'double' ? 'SL92 Mid' : 'SL92 Dbl'}
                     </button>
                   ))}
                 </div>
@@ -499,8 +499,8 @@ export default function QuoteCalculator({
             <div className="bg-brand-surface border border-brand-border p-4 flex gap-3 text-xs text-brand-text-muted rounded-sm shadow-sm">
               <AlertCircle className="h-5 w-5 text-brand-accent shrink-0 mt-0.5" />
               <div className="leading-relaxed">
-                <span className="text-brand-text font-bold block mb-1">QUALITY ASSURED</span>
-                We use minimum 25MPa/32MPa compressive grading concrete. Structural crossovers are designed to align with Melbourne council guidelines. Code-conforming steel support bars included.
+                <span className="text-brand-text font-bold block mb-1">COMPLIANCE ASSURED</span>
+                We use minimum 25MPa/32MPa compressive grading concrete. Structural crossovers comply with Melbourne council standards. Code-conforming steel support bars included.
               </div>
             </div>
 

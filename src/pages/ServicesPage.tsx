@@ -16,13 +16,13 @@ export default function ServicesPage({ onSelectServiceForQuote, onNavigate }: Se
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(225,224,204,0.06),transparent_60%)] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-4 relative z-10 font-sans">
           <span className="text-[#E1E0CC] font-mono text-[10px] tracking-[0.3em] font-bold uppercase">
-            What We Do
+            Melbourne Concrete Specialists
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-medium tracking-tight uppercase leading-none text-[#E1E0CC]">
-            Our <span className="font-extrabold text-white">Concrete Services</span>
+            Premium <span className="font-extrabold text-white">Concrete Services</span>
           </h1>
           <p className="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto font-light leading-relaxed">
-            Retaining walls, epoxy, exposed aggregate, residential slabs, stamped concrete and civil footpaths — durable concrete solutions built to last across Melbourne.
+            Professional site excavations, heavy steel reinforce setup, and pristine decorative aggregates. All built strictly compliant to AS3600 residential building standards.
           </p>
         </div>
       </section>
@@ -122,7 +122,7 @@ export default function ServicesPage({ onSelectServiceForQuote, onNavigate }: Se
               <div className="space-y-2 pt-2 border-t border-brand-border/40 text-[11px] text-brand-text">
                 <div className="flex items-center gap-2">
                   <Layers className="h-3.5 w-3.5 text-zinc-400 shrink-0" />
-                  <span>SL82 Dual Heavy Steel reinforcement</span>
+                  <span>SL92 Dual Heavy Steel reinforcement</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Hammer className="h-3.5 w-3.5 text-zinc-400 shrink-0" />

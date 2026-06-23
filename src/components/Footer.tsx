@@ -32,18 +32,21 @@ export default function Footer({ onNavigate }: FooterProps) {
             <div className="flex items-center gap-3">
               <a href="#/" onClick={(e) => handleLinkClick(e, 'home')} className="flex items-center gap-3">
                 <img
-                  src="/logo.png"
+                  src="https://img1.wsimg.com/isteam/ip/426ef587-78bb-4986-95b4-3c780d59c7a8/IMG_1163.png"
                   alt="Elite Pour Dynamics Logo"
                   className="h-8 w-8 object-contain border border-brand-accent/20 rounded-full"
+                  onError={(e) => {
+                    (e.target as HTMLElement).style.display = 'none';
+                  }}
                 />
-                <span className="font-display font-black text-lg tracking-wider text-brand-text uppercase">
-                  ELITE POUR <span className="text-brand-gold">DYNAMICS</span>
+                <span className="font-display font-bold text-lg tracking-wider text-brand-text uppercase">
+                  ELITE POUR <span className="text-zinc-600">DYNAMICS</span>
                 </span>
               </a>
             </div>
 
             <p className="text-xs sm:text-sm text-brand-text-muted leading-relaxed max-w-sm font-light">
-              High-quality driveways, house slabs, footpaths and decorative concrete built to last.
+              Melbourne's leading independent concrete installation firm. We combine specialized heavy machinery, premium steel reinforcement structures, and engineered concrete mixtures to pour pavements built for decades of point loading.
             </p>
 
             {/* Social Icons row */}
@@ -155,7 +158,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
               <div className="flex items-center gap-2 text-[10px] text-brand-text-muted">
                 <ShieldCheck className="h-4.5 w-4.5 text-zinc-900" />
-                <span>Fully Insured</span>
+                <span>VIC CIVIL NO: 75172343</span>
               </div>
             </div>
           </div>
@@ -165,13 +168,13 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Bottom copyright details table */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
           <p className="text-brand-text-muted/80 text-center md:text-left">
-            Copyright © 2026 Elite Pour Dynamics - All Rights Reserved.
+            Copyright © 2026 Elite Pour Dynamics - All Rights Reserved. Active under Victoria Civil Concrete Code.
           </p>
 
           <div className="flex gap-4 text-brand-text-muted/80 text-[10px] font-mono tracking-wide">
-            <p>Mon – Sun: 09:00 am – 06:00 pm</p>
+            <p>GoDaddy Redesign Template</p>
             <span>•</span>
-            <p>Melbourne, VIC</p>
+            <p>VIC Structural Compliant</p>
           </div>
         </div>
 

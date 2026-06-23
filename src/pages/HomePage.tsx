@@ -2,15 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Shield, Hammer, Users, Star } from 'lucide-react';
 import { PrismaHero } from '../components/ui/prisma-hero';
-import { servicesData, testimonialsData, aboutCopy } from '../data/websiteData';
+import { servicesData, testimonialsData } from '../data/websiteData';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
-  isInitialLoading?: boolean;
-  loaderStep?: number;
 }
 
-export default function HomePage({ onNavigate, isInitialLoading = false, loaderStep = 1 }: HomePageProps) {
+export default function HomePage({ onNavigate }: HomePageProps) {
   // Select top 3 services for display
   const featuredServices = servicesData.slice(0, 3);
   const topFeedback = testimonialsData[0];
@@ -18,11 +16,7 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
   return (
     <div className="space-y-0">
       {/* Visual Hero Section */}
-      <PrismaHero 
-        onEstimatorClick={() => onNavigate('estimator')} 
-        isInitialLoading={isInitialLoading}
-        loaderStep={loaderStep}
-      />
+      <PrismaHero onEstimatorClick={() => onNavigate('estimator')} />
 
       {/* Corporate Highlights Banner */}
       <section className="py-12 bg-zinc-950 text-white relative overflow-hidden">
@@ -36,7 +30,7 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
           <div className="flex flex-col items-center text-center space-y-2">
             <Hammer className="h-7 w-7 text-[#E1E0CC]" />
             <span className="text-sm font-bold uppercase tracking-wider font-display">Premium Steel Reinforce</span>
-            <span className="text-[10px] text-zinc-400 font-mono">SL72 / SL82 Spec Mesh</span>
+            <span className="text-[10px] text-zinc-400 font-mono">SL82 / SL92 Spec Mesh</span>
           </div>
           <div className="flex flex-col items-center text-center space-y-2">
             <Users className="h-7 w-7 text-[#E1E0CC]" />
@@ -58,27 +52,27 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
             
             <div className="lg:col-span-5 space-y-6">
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-brand-text/50">
-                About Us
+                Melbourne Premium Concreting
               </span>
               <h2 className="text-4xl md:text-5xl font-display font-medium tracking-tight text-[#161412] uppercase leading-[0.95]">
-                About <br className="hidden md:inline" />
-                <span className="font-extrabold text-[#161412]">Elite Pour Dynamics</span>
+                Engineering <br className="hidden md:inline" />
+                <span className="font-extrabold text-[#161412]">Ground Integrity</span>
               </h2>
               <p className="text-brand-text-muted text-sm sm:text-base font-light leading-relaxed">
-                Discover durable concrete for all construction needs. Enhance your property with our expert masonry services and quality materials.
+                Elite Pour Dynamics is Melbourne's premium crew of concrete specialists. Headquartered in the Wollert precinct, we combine advanced engineering calculations, rigid formwork setup, heavy-duty reinforcing steel, and supreme concrete aggregate mixtures to pour pavements built for decades of constant loading.
               </p>
-              <div className="pt-2">
-                <span className="text-xs font-mono font-bold tracking-widest uppercase text-brand-text/50 block mb-3">
-                  {aboutCopy.visionHeading}
-                </span>
-                <div className="space-y-3">
-                  {aboutCopy.vision.map((point, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <CheckCircle2 className="h-4.5 w-4.5 text-[#161412] shrink-0" />
-                      <span className="text-xs sm:text-sm font-medium text-brand-text">{point}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="space-y-3 pt-2">
+                {[
+                  'Engineered Class 3 structural roadbase compacted to refusal',
+                  'Rigid steel-reinforced concrete piers for sub-grade support',
+                  'Double-layer heavy-duty reinforcement on vehicular zones',
+                  'Vapor barrier standard and expansion contraction cuts control'
+                ].map((spec, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <CheckCircle2 className="h-4.5 w-4.5 text-[#161412] shrink-0" />
+                    <span className="text-xs sm:text-sm font-medium text-brand-text">{spec}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -147,11 +141,11 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div className="space-y-4">
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-brand-text/50">
-                What We Do
+                Our Capabilities
               </span>
               <h2 className="text-4xl md:text-5xl font-display font-medium tracking-tight text-[#161412] uppercase leading-[0.95]">
-                Our Concrete <br className="hidden md:inline" />
-                <span className="font-extrabold text-[#161412]">Services</span>
+                Specialized <br className="hidden md:inline" />
+                <span className="font-extrabold text-[#161412]">Pour Solutions</span>
               </h2>
             </div>
             <button 
@@ -167,23 +161,17 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
             {featuredServices.map((service, index) => (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ 
-                  type: 'spring', 
-                  stiffness: 60, 
-                  damping: 18, 
-                  delay: index * 0.12,
-                  mass: 0.9
-                }}
-                className="bg-white border border-brand-border rounded-sm shadow-sm hover:shadow-xl hover:border-brand-gold/40 hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col group overflow-hidden transform-gpu"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white border border-brand-border rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col group overflow-hidden"
               >
                 <div className="h-48 relative overflow-hidden bg-zinc-900 border-b border-brand-border">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.04] transform-gpu"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
                   <span className="absolute bottom-4 left-4 font-mono text-[10px] font-bold text-white bg-zinc-950/80 px-2.5 py-1 tracking-wider uppercase rounded-sm border border-white/10">
@@ -192,7 +180,7 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
                 </div>
                 <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
-                    <h3 className="font-display font-bold uppercase text-brand-text text-base leading-snug group-hover:text-brand-gold transition-colors duration-300">
+                    <h3 className="font-display font-bold uppercase text-brand-text text-base leading-snug group-hover:text-black transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-xs text-brand-text-muted leading-relaxed font-light">
@@ -201,7 +189,7 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
                   </div>
                   <button 
                     onClick={() => onNavigate('services')}
-                    className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#161412] flex items-center gap-1.5 group-hover:underline cursor-pointer w-fit"
+                    className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#161412] flex items-center gap-1.5 group-hover:underline "
                   >
                     View Specifications <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                   </button>
@@ -209,115 +197,6 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Recent Work / Project Showcase Bento Grid */}
-      <section className="py-24 bg-white relative border-t border-brand-border/40">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div className="space-y-4">
-              <span className="text-xs font-mono font-bold tracking-widest uppercase text-brand-text/50">
-                Craftsmanship In Action
-              </span>
-              <h2 className="text-4xl md:text-5xl font-display font-medium tracking-tight text-[#161412] uppercase leading-[0.95]">
-                Recent Melbourne <br className="hidden md:inline" />
-                <span className="font-extrabold text-[#161412]">Pours Showcase</span>
-              </h2>
-            </div>
-            <button 
-              onClick={() => onNavigate('gallery')}
-              className="group inline-flex items-center gap-3 rounded-full bg-[#161412] hover:bg-black text-white text-xs px-5 py-2.5 font-bold uppercase tracking-wider cursor-pointer shadow transition-all duration-200"
-            >
-              View Full Gallery
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-            </button>
-          </div>
-
-          {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            
-            {/* Featured Project - Left column (spans 7 cols on desktop) */}
-            <div 
-              onClick={() => onNavigate('gallery')}
-              className="md:col-span-7 group relative h-[420px] rounded-sm overflow-hidden border border-brand-border bg-zinc-950 cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <img 
-                src="/images/gallery/gallery-01.jpg"
-                alt="Exposed Aggregate Driveway Wollert"
-                className="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-102 transition-all duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              
-              <div className="absolute top-4 left-4 bg-brand-accent text-white font-mono text-[9px] font-bold px-2.5 py-1 tracking-widest uppercase rounded-sm z-10">
-                Featured Project
-              </div>
-
-              <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
-                <span className="text-[10px] font-mono text-brand-gold uppercase tracking-widest font-bold">
-                  Exposed Aggregate • Wollert
-                </span>
-                <h3 className="font-display text-2xl font-black uppercase tracking-wide">
-                  Wollert Exclusive Aggregate Driveway
-                </h3>
-                <p className="text-xs text-zinc-300 font-light leading-relaxed max-w-lg group-hover:text-white transition-colors duration-200">
-                  Premium river aggregate concrete formulated for heavy-load domestic vehicles. Finished with a protective UV gloss sealer and precision-cut stress lines.
-                </p>
-              </div>
-            </div>
-
-            {/* Right column - 2 stacked projects (spans 5 cols on desktop) */}
-            <div className="md:col-span-5 flex flex-col gap-6">
-              
-              {/* Project 2 - Epoxy floor */}
-              <div 
-                onClick={() => onNavigate('gallery')}
-                className="group relative h-[197px] rounded-sm overflow-hidden border border-brand-border bg-zinc-950 cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <img 
-                  src="/images/gallery/gallery-02.jpg"
-                  alt="High-Gloss Epoxy Garage Floor"
-                  className="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
-                
-                <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
-                  <span className="text-[9px] font-mono text-brand-gold uppercase tracking-widest font-bold">
-                    High-Gloss Epoxy • Wollert
-                  </span>
-                  <h3 className="font-display text-lg font-black uppercase tracking-wide">
-                    Double Garage Flake Epoxy Floor
-                  </h3>
-                </div>
-              </div>
-
-              {/* Project 3 - Retaining Wall */}
-              <div 
-                onClick={() => onNavigate('gallery')}
-                className="group relative h-[197px] rounded-sm overflow-hidden border border-brand-border bg-zinc-950 cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <img 
-                  src="/images/gallery/gallery-03.jpg"
-                  alt="Concrete Retaining Wall"
-                  className="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
-                
-                <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
-                  <span className="text-[9px] font-mono text-brand-gold uppercase tracking-widest font-bold">
-                    Retaining Wall • Craigieburn
-                  </span>
-                  <h3 className="font-display text-lg font-black uppercase tracking-wide">
-                    Reinforced Concrete Sleeper Wall
-                  </h3>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
         </div>
       </section>
 
@@ -330,7 +209,7 @@ export default function HomePage({ onNavigate, isInitialLoading = false, loaderS
             </div>
             <div className="space-y-6 max-w-3xl relative z-10">
               <span className="text-brand-accent font-display text-[10px] tracking-[0.3em] font-bold uppercase block">
-                See what others are saying about Elite Pour Dynamics!
+                Latest Client Feedback
               </span>
               <div className="flex gap-1">
                 {[...Array(topFeedback.rating)].map((_, i) => (

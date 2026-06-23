@@ -11,13 +11,13 @@ export default function ProcessPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(225,224,204,0.06),transparent_60%)] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-4 relative z-10">
           <span className="text-[#E1E0CC] font-mono text-[10px] tracking-[0.3em] font-bold uppercase">
-            How We Work
+            Surgical Engineering Workflows
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-medium tracking-tight uppercase leading-none text-[#E1E0CC]">
-            Our <span className="font-extrabold text-white">Process</span>
+            The Elite <span className="font-extrabold text-white">Concrete Process</span>
           </h1>
           <p className="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto font-light leading-relaxed">
-            From site inspection and base preparation through to finishing, curing and sealing — every step done with precision and attention to detail.
+            From terrain leveling with precise laser guidance to custom chemical washes and high-grade sealers, discover our strict 7-Step Quality Blueprint.
           </p>
         </div>
       </section>

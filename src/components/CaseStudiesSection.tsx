@@ -6,7 +6,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  MapPin, 
   ArrowRight, 
   X, 
   ShieldCheck, 
@@ -48,21 +47,11 @@ export default function CaseStudiesSection() {
 
         {/* Masonry Column Container */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 [column-fill:_balance]">
-          {caseStudiesData.map((project, index) => (
-            <motion.div
+          {caseStudiesData.map((project) => (
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ 
-                type: 'spring', 
-                stiffness: 60, 
-                damping: 18, 
-                delay: index * 0.1,
-                mass: 0.9
-              }}
               onClick={() => setSelectedCase(project)}
-              className="break-inside-avoid bg-zinc-50 border border-brand-border/40 hover:border-brand-gold/50 rounded-xs overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group cursor-pointer flex flex-col mb-8 relative transform-gpu"
+              className="break-inside-avoid bg-zinc-50 border border-brand-border/40 hover:border-[#C8A84C]/50 rounded-xs overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col mb-8 relative"
               id={`case-card-${project.id}`}
             >
               {/* Image Frame with Smooth Zoom Effect on Hover */}
@@ -71,7 +60,7 @@ export default function CaseStudiesSection() {
                   src={project.image}
                   alt={project.title}
                   referrerPolicy="no-referrer"
-                  className="w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.04] transform-gpu"
+                  className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
                 
@@ -81,13 +70,9 @@ export default function CaseStudiesSection() {
                 </div>
 
                 {/* Subtitle bottom left */}
-                <div className="absolute bottom-4 left-4 text-white z-10">
-                  <p className="font-mono text-[9px] text-[#C8A84C] uppercase tracking-wider mb-1 font-bold">
+                <div className="absolute bottom-5 left-5 text-white z-10">
+                  <p className="font-mono text-[10px] text-[#C8A84C] uppercase tracking-wider font-bold">
                     {project.subtitle}
-                  </p>
-                  <p className="text-[10px] text-zinc-300 font-light flex items-center gap-1">
-                    <MapPin className="h-3 w-3 text-[#C8A84C]" />
-                    {project.location}
                   </p>
                 </div>
               </div>
@@ -95,7 +80,7 @@ export default function CaseStudiesSection() {
               {/* Information Block */}
               <div className="p-6 flex-grow flex flex-col justify-between">
                 <div className="space-y-4">
-                  <h3 className="font-display font-extrabold text-lg sm:text-xl uppercase tracking-wide text-[#161412] leading-tight group-hover:text-brand-gold transition-colors duration-300">
+                  <h3 className="font-display font-extrabold text-lg sm:text-xl uppercase tracking-wide text-[#161412] leading-tight group-hover:text-[#C8A84C] transition-colors duration-200">
                     {project.title}
                   </h3>
                   
@@ -131,17 +116,17 @@ export default function CaseStudiesSection() {
                 </div>
 
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Decorative compliance quote banner at footer */}
         <div className="mt-16 bg-zinc-50 border border-brand-border/40 p-6 sm:p-8 rounded-xs text-center">
           <p className="font-mono text-xs text-[#C8A84C] uppercase tracking-widest font-bold mb-2">
-            ★ Premium Structural Standards &amp; Quality Assured ★
+            ★ Registered Victoria Building Practitioner Signoffs Included ★
           </p>
           <p className="text-[#161412] text-xs sm:text-sm font-light max-w-2xl mx-auto leading-relaxed">
-            Elite Pour Dynamics builds every custom driveway, crossover, and structural element using top-tier materials and construction protocols. Fully conforming with standard Australian concrete guidelines (AS3600).
+            Elite Pour Dynamics certifies every custom driveway, crossover, and structural element with compliant stress-grade audits. Fully conforming with AS3600-2018 parameters.
           </p>
         </div>
       </div>
@@ -164,7 +149,7 @@ export default function CaseStudiesSection() {
               initial={{ opacity: 0, scale: 0.95, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 30 }}
-              transition={{ type: 'spring', damping: 28, stiffness: 120, mass: 0.9 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               className="bg-white border border-[#C8A84C]/25 rounded-xs w-full max-w-4xl shadow-2xl relative z-10 overflow-hidden flex flex-col md:flex-row max-h-[90vh] md:max-h-[85vh]"
               id="case-file-modal"
             >
@@ -198,13 +183,9 @@ export default function CaseStudiesSection() {
                   <span className="text-[10px] font-mono tracking-widest text-[#C8A84C] uppercase font-bold">
                     MELBOURNE PROVE WORKS
                   </span>
-                  <h4 className="font-display font-bold text-lg sm:text-xl uppercase tracking-wide text-white leading-tight">
+                  <h4 className="font-display font-bold text-lg sm:text-xl uppercase tracking-wide text-white leading-tight pb-1">
                     {selectedCase.title}
                   </h4>
-                  <p className="text-[11px] text-zinc-300 font-light flex items-center gap-1 justify-start">
-                    <MapPin className="h-3 w-3 text-[#C8A84C]" />
-                    {selectedCase.location}
-                  </p>
                 </div>
               </div>
 

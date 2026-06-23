@@ -66,7 +66,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <div 
           className="absolute inset-0 bg-cover bg-center animate-hero-pan"
-          style={{ backgroundImage: `url('/images/hero-1.jpg')` }}
+          style={{ backgroundImage: `url('https://img1.wsimg.com/isteam/ip/426ef587-78bb-4986-95b4-3c780d59c7a8/IMG_9470.jpeg')` }}
         />
         {/* Layered vignette masking */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#0F0E0D]/98 via-[#0F0E0D]/80 to-[#0F0E0D]/95 z-10" />
@@ -89,7 +89,8 @@ export default function Hero() {
 
           {/* Heading */}
           <h1 className="font-display font-black text-6xl sm:text-[7.2rem] md:text-[8.5rem] tracking-tight uppercase leading-[0.91] text-[#EDE9E3]">
-            <span className="block animate-fade-up-2">ELITEPOUR</span>
+            <span className="block animate-fade-up-2">ELITE</span>
+            <span className="block text-[#E07B39] italic animate-fade-up-3">POUR</span>
             <span className="relative inline-block animate-fade-up-4">
               DYNAMICS
               <span className="absolute bottom-1 sm:bottom-3 left-0 right-0 h-[3px] sm:h-[5px] bg-[#E07B39] scale-x-0 origin-left animate-bar-expand" />

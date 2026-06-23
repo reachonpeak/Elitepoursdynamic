@@ -8,7 +8,7 @@ export interface CaseStudy {
   title: string;
   subtitle: string;
   location: string;
-  category: 'Exposed Aggregate' | 'Honed Concrete' | 'Polished Internal' | 'Architectural Retaining' | 'Epoxy Coatings' | 'Civil Concrete';
+  category: 'Exposed Aggregate' | 'Honed Concrete' | 'Polished Internal' | 'Architectural Retaining' | 'Epoxy Coatings' | 'Civil Concrete' | 'Concrete Slabs' | 'Stamped Concrete';
   image: string;
   aspectRatio: 'aspect-[3/4]' | 'aspect-[4/3]' | 'aspect-square' | 'aspect-[16/10]';
   metrics: { label: string; value: string }[];
@@ -31,7 +31,7 @@ export const caseStudiesData: CaseStudy[] = [
     subtitle: 'Bespoke Charcoal Granite Exposed Aggregate',
     location: 'Toorak, VIC 3142',
     category: 'Exposed Aggregate',
-    image: '/images/gallery/gallery-19.jpg',
+    image: '/images/exposed_aggregate_side_pathway.jpeg',
     aspectRatio: 'aspect-[3/4]', // Tall for masonry layout variety
     metrics: [
       { label: 'Total Area', value: '240 sqm' },
@@ -60,81 +60,119 @@ export const caseStudiesData: CaseStudy[] = [
       curingAndSealer: 'Used a high-pressure 3500 PSI water cleaner 16 hours after pouring to strip the retarded surface cement skin, beautifully exposing the glittering white granite aggregate. Air-dried for 48 hours, then roll-coated dual layers of UV protective high-grade acrylic sealer.',
     },
   },
-  {
-    id: 'case-brighton',
-    title: 'Brighton Coastal Pool Deck & Pavilion',
-    subtitle: 'Alabaster Honed Seamless Concrete Decking',
-    location: 'Brighton, VIC 3186',
-    category: 'Honed Concrete',
-    image: '/images/gallery/gallery-09.jpg',
-    aspectRatio: 'aspect-[4/3]', // Wide
-    metrics: [
-      { label: 'Total Area', value: '115 sqm' },
-      { label: 'Strength Grade', value: '25MPa-32MPa' },
-      { label: 'Base Thickness', value: '110mm Depth' },
-      { label: 'Aggregate Finish', value: 'Premium Honed' },
-    ],
-    clientBrief: 'Create a flat, slip-resistant pool surround in a bright, beachside alabaster-white tone. The surface had to be extremely soft on bare feet, chlorine-safe, salt-exposure certified, and flow seamlessly from the indoor porcelain tiles to the outdoor pavilion landscape.',
-    engineeringChallenge: 'Positioned right on Port Phillip Bay border, coastal sand shifting poses severe foundation settling threats. Additionally, being a pool deck, the perimeter concrete had to align perfectly flat with the heavy frameless glass pool fencing tracks without cracking or setting stresses.',
-    solutionSpecs: [
-      'Embedded deep screw-piers at critical load corners to anchor the slab into stable sub-sand gravel strata.',
-      'Incorporated specialized salt-resistant crystalline admixture directly into the concrete blend to prevent reinforcing bar corrosion.',
-      'Cut micro expansion joints using diamond-tipped track saws at precise 2.2m centers and filled them with color-matched polyurethane sealant.',
-    ],
-    materialsUsed: [
-      'Off-White Alabaster Oxide Cement mixture base',
-      'Fine silica quartz sand & rounded white marble matrix aggregate (5mm smooth pebbles)',
-      'Salt-resistant penetrating invisible silane-siloxane impregnating sealer',
-      'Polyethylene foam expanding joint strips',
-    ],
-    stepDetail: {
-      excavation: 'Excavated 180mm of light sandy soil. Constructed rigorous formwork utilizing waterproof timber edgeboards backed by heavy structural timber stakes spaced every 450mm.',
-      steelReinforcement: 'Tied SL72 rebar mesh throughout, incorporating stainless-steel structural pins positioned where the heavy frameless glass pool fencing boots would be core-drilled later.',
-      pourAndFinishing: 'Screeded and flat-steeled the pour. After standard curing of 10 days, a commercial concrete grinder fitted with metal-bond diamond abrasives ground the surface flat, exposing a gorgeous snowy marble aggregate.',
-      curingAndSealer: 'Cleaned with neutral organic soap washes. Finished by applying a premium penetrating impregnating sealer which leaves a completely natural matte appearance while shielding against salt, pool chemicals, and coastal damp.',
-    },
-  },
+
   {
     id: 'case-fitzroy',
-    title: 'The Fitzroy Industrial Loft Refurbishment',
-    subtitle: 'Mirror-Gloss Diamond Polished Internal Flooring',
+    title: 'The Fitzroy Designer Epoxy Studio',
+    subtitle: 'High-Gloss Seamless Metallic Epoxy Coating',
     location: 'Fitzroy, VIC 3065',
-    category: 'Polished Internal',
-    image: '/images/gallery/gallery-15.jpg',
+    category: 'Epoxy Coatings',
+    image: '/images/epoxy_case_study.webp',
     aspectRatio: 'aspect-square', // Neutral square
     metrics: [
-      { label: 'Total Area', value: '95 sqm' },
-      { label: 'Strength Grade', value: '32_10 High Cement' },
-      { label: 'Polish Grit', value: '3000 Mirror Finish' },
-      { label: 'Reflectivity', value: '88% Gloss Index' },
+      { label: 'Total Area', value: '120 sqm' },
+      { label: 'Base Prep', value: 'Diamond Ground' },
+      { label: 'Coating Layers', value: '4-Stage System' },
+      { label: 'Gloss Level', value: 'High Reflective' },
     ],
-    clientBrief: 'Convert a rugged historic Fitzroy shoe-factory sub-floor into an incredibly smooth, mirror-finish light reflective polished concrete floor. The floor needed to endure heavy heavy foot traffic from art exhibition openings without staining from red wine, oils, or dragging furniture.',
-    engineeringChallenge: 'The existing 85-year-old concrete slab was structurally uneven, severely oil-stained, and cracked in several key stress sections. Normal overlayment was ruled out due to strict ceiling height restrictions.',
+    clientBrief: 'The client requested a high-performance, seamless designer epoxy floor for their boutique art and design studio in Fitzroy. The surface needed to be chemically resistant, stain-proof, and capable of reflecting overhead track lighting to enhance the feeling of space while providing a modern industrial aesthetic.',
+    engineeringChallenge: 'The old concrete subgrade was highly porous, contaminated with historic industrial oils, and had multiple structural cracks. Failure to properly prepare the surface and block rising damp would lead to moisture bubbling and delamination of the epoxy.',
     solutionSpecs: [
-      'Applied intensive diamond grinding to shave off 6mm of irregular historic concrete and expose a fresh slab matrix.',
-      'Saturated all slab fissures and cracks with a low-viscosity high-strength epoxy resin consolidation compound.',
-      'Injected industrial structural non-shrink grouting into structural cracks prior to final burnish stages.',
+      'Conducted deep mechanical diamond grinding to remove the contaminated top layer and open concrete pores.',
+      'Applied a high-solids moisture vapor barrier primer to seal the substrate and prevent outgassing.',
+      'Injected structural crack-bridging epoxy compound to stabilize stress fissures.',
+      'Applied a multi-layered metallic pigmented epoxy basecoat followed by a crystal-clear UV-resistant polyaspartic topcoat.',
     ],
     materialsUsed: [
-      'Existing structural historic foundation slab',
-      'Lithium Silicate liquid concrete chemical densifier (high penetration)',
-      'Premium stone matrix resinous grout kit',
-      'Advanced water-based polyurethane sealer guard (non-yellowing, extreme scratch-proof, stain-safe)',
+      'Industrial-grade 100% solids epoxy base resin',
+      'Metallic color pigments (Silver and Charcoal blend)',
+      'High-solids moisture vapor barrier primer',
+      'Aliphatic polyurethane UV-stable clear protective topcoat',
     ],
     stepDetail: {
-      excavation: 'No excavation required; structural preparation involved heavy mechanical diamond scraping with 16-grit metal-bond segments to strip grease, dirt, and historic adhesives.',
-      steelReinforcement: 'Injected carbon-fiber stitch pins across structural crack paths to mechanical couple the moving crack-halves together and prevent future slab shifting.',
-      pourAndFinishing: 'Honed the floor incrementally using diamond polishing pads from 50 to 800 grit. Applied the chemical lithium silicosilicate densifier which reacts with free lime to double the surface marble mineral hardness.',
-      curingAndSealer: 'Polished up to 3000 grit using premium resin-bonds. Sealed using a high-performance chemical guard coating, high-speed burnished with specialized natural hair pads to achieve a stellar 88% light-reflectivity mirror surface.',
+      excavation: 'Surface preparation began with mechanical diamond grinding using 25-grit metal-bond diamond shoes to strip all oil stains and create a clean, profiled concrete profile (CSP-3) for maximum bonding.',
+      steelReinforcement: 'Repaired and stabilized concrete cracks by routing them out, inserting carbon-fiber stitch pins, and filling them with a fast-curing structural epoxy paste before grinding them completely flush.',
+      pourAndFinishing: 'Laid the moisture-barrier primer layer. Once cured, the metallic pigmented epoxy basecoat was applied using squeegees and rollers, then back-rolled and manipulated with denatured alcohol sprays to create a unique organic metallic flow pattern.',
+      curingAndSealer: 'After the basecoat cured, the floor was vacuumed and sealed with an elite aliphatic polyurethane topcoat infused with fine anti-slip glass beads, delivering a durable, scratch-resistant, high-gloss finish.',
     },
   },
   {
     id: 'case-templestowe',
+    title: 'Templestowe Municipal Concrete Pathways',
+    subtitle: 'High-Strength Pedestrian Civil Pathways',
+    location: 'Templestowe, VIC 3106',
+    category: 'Civil Concrete',
+    image: '/images/concrete_pathway_case_study.jpg',
+    aspectRatio: 'aspect-[3/4]', // Tall
+    metrics: [
+      { label: 'Pathway Length', value: '180 meters' },
+      { label: 'Strength Grade', value: '25MPa Commercial' },
+      { label: 'Base Depth', value: '100mm Depth' },
+      { label: 'Finish Type', value: 'Broom Finished' },
+    ],
+    clientBrief: 'The local municipal authority requested the installation of a high-durability, slip-resistant concrete pedestrian pathway linking the residential estate to the parkland. The path needed to withstand constant foot traffic, light maintenance vehicles, and heavy weather conditions without cracking or soil erosion.',
+    engineeringChallenge: 'The path ran alongside a sloped grass reserve with highly active clay subsoil. Proper excavation, subgrade compaction, drainage runoff slopes, and precise expansion joints were critical to prevent ground movement from buckling or shifting the concrete slabs.',
+    solutionSpecs: [
+      'Excavated clay loam to a uniform depth of 180mm with structural grade leveling.',
+      'Laid a 75mm compacted Class 3 Fine Crushed Rock (FCR) road base to create a stable foundation.',
+      'Installed SL72 steel reinforcing mesh elevated on bar chairs.',
+      'Poured 25MPa concrete with a cross-fall gradient of 2% to ensure self-draining water runoff.',
+    ],
+    materialsUsed: [
+      '25MPa Commercial Grade Concrete mix',
+      'SL72 reinforcing mesh and expansion foam strips',
+      'Class 3 Fine Crushed Rock (FCR)',
+      'Slip-resistant sealer with broom texture finish',
+    ],
+    stepDetail: {
+      excavation: 'Excavated 18cm depth of organic topsoil and clay. Compacted the exposed subgrade with a 2.5-tonne vibration plate compactor to achieve 98% relative compaction.',
+      steelReinforcement: 'Placed SL72 steel mesh on 50mm plastic chairs to position the steel reinforcement in the middle of the pour, ensuring maximum tensile strength against cracking.',
+      pourAndFinishing: 'Poured the concrete via pump-out and hand-screeded to a 2% gradient for drainage. Applied a professional hand-broom finish to provide a high-traction, slip-resistant surface for pedestrians.',
+      curingAndSealer: 'Clean-cut tool joints at precise 2.5-meter intervals to control shrinkage cracking. Sprayed water-based acrylic curing compound to retard drying and achieve full design strength.',
+    },
+  },
+  {
+    id: 'case-wollert',
+    title: 'Wollert Engineered House Slab',
+    subtitle: 'Structural Steel-Reinforced House Foundation',
+    location: 'Wollert, VIC 3750',
+    category: 'Concrete Slabs',
+    image: '/images/house_slab_finished.jpg',
+    aspectRatio: 'aspect-[16/10]', // Wide landscape
+    metrics: [
+      { label: 'Total Area', value: '210 sqm' },
+      { label: 'Strength Grade', value: '32MPa Premium' },
+      { label: 'Slab Thickness', value: '100mm Depth' },
+      { label: 'Steel Reinforcement', value: 'SL82 Dual Mesh' },
+    ],
+    clientBrief: 'The client required a premium, structurally engineered slab foundation for a new double-story residential home in Wollert. The foundation had to meet strict soil reports (Class H1 highly active clay) and support substantial structural loads while ensuring zero water penetration or settling cracks.',
+    engineeringChallenge: 'Wollert\'s reactive clay soil is prone to severe swelling and shrinking. To prevent foundation shifting, a waffle pod slab design was engineered with deep concrete piles anchored into stable soil layers and continuous vapor barrier protection.',
+    solutionSpecs: [
+      'Drilled 18 foundation piers down to 1.8 meters to anchor the slab into stable clay layers.',
+      'Constructed waffle pod formwork utilizing high-density thermal pods and deep perimeter beams.',
+      'Laid a heavy-duty 200um moisture vapor barrier to block rising ground moisture.',
+      'Engineered a dual-layer SL82 steel reinforcement mesh layout on 50/65mm bar chairs.',
+    ],
+    materialsUsed: [
+      '32MPa structural grade concrete mix',
+      'SL82 high-tensile steel reinforcing mesh',
+      '200-micron heavy-duty polythene vapor barrier',
+      'High-density EPS waffle pods and plastic spacers',
+    ],
+    stepDetail: {
+      excavation: 'Excavated and leveled the building pad down to a flat subgrade. Bored 18 foundation piers at key load-bearing junctions and poured them with structural concrete.',
+      steelReinforcement: 'Placed 300mm waffle pods, laid the moisture vapor barrier, and constructed the dual-layer SL82 steel mesh framework with perimeter starter bars and trench meshes.',
+      pourAndFinishing: 'Poured 32MPa concrete using a concrete pump. Screeded and laser-leveled the slab surface, then finished with a ride-on power trowel to achieve a class-one burnished finish.',
+      curingAndSealer: 'Applied a specialized solvent-based curing compound to slow moisture loss. Wet-cured the slab for 7 days to maximize structural strength and concrete durability.',
+    },
+  },
+  {
+    id: 'case-templestowe-retaining',
     title: 'Templestowe Brutalist Terraced Gardens',
     subtitle: 'Architectural Off-Form Structural Retaining Structure',
     location: 'Templestowe, VIC 3106',
     category: 'Architectural Retaining',
-    image: '/images/gallery/gallery-18.jpg',
+    image: '/images/concrete_sleeper_retaining_wall.jpeg',
     aspectRatio: 'aspect-[3/4]', // Tall
     metrics: [
       { label: 'Wall Length', value: '45 meters' },
@@ -163,37 +201,38 @@ export const caseStudiesData: CaseStudy[] = [
     },
   },
   {
-    id: 'case-wollert',
-    title: 'Wollert Engineered Civil Crossover',
-    subtitle: 'High-Strength Municipality Crossover & Curb',
-    location: 'Wollert, VIC 3750',
-    category: 'Civil Concrete',
-    image: '/images/services/civil-footpaths.jpg',
-    aspectRatio: 'aspect-[16/10]', // Wide landscape
+    id: 'case-stamped-concrete',
+    title: 'Craigieburn Slate Stamped Driveway',
+    subtitle: 'Immaculate Decorative Stamped Concrete',
+    location: 'Craigieburn, VIC 3064',
+    category: 'Stamped Concrete',
+    image: '/images/stamped_concrete_flagstone_driveway.jpeg',
+    aspectRatio: 'aspect-[4/3]', // Wide
     metrics: [
-      { label: 'Total Area', value: '45 sqm' },
-      { label: 'Strength Grade', value: '32MPa Civil' },
-      { label: 'Crossover Depth', value: '150mm Depth' },
-      { label: 'Compliance Code', value: 'VIC Civil Standard' },
+      { label: 'Total Area', value: '145 sqm' },
+      { label: 'Strength Grade', value: '32MPa Premium' },
+      { label: 'Base Thickness', value: '110mm Depth' },
+      { label: 'Pattern Type', value: 'Slate Flagstone' },
     ],
-    clientBrief: 'Demolish an unsafe, cracked old domestic asphalt crossover and pour a robust, reinforced concrete crossover that complies perfectly with City of Whittlesea crossover engineering standards. The crossover needed to support constant heavy delivery trucks.',
-    engineeringChallenge: 'The crossover bounds a high-tilt main road with complex utility channels (gas, water, and fiber optical cables) running barely 300mm below the concrete excavation scrape level.',
+    clientBrief: 'The homeowner wanted a rustic, high-end slate flagstone driveway to complement their suburban home. Traditional slate tiles were ruled out due to cost, high maintenance, and weed growth. Stamped concrete was chosen as the perfect alternative to deliver the elegant look of hand-laid masonry with single-slab structural strength.',
+    engineeringChallenge: 'The driveway had a gentle slope and had to match the grade of the municipal sidewalk and the garage floor perfectly. The stamp texture had to be applied uniformly across the entire 145 sqm slab within the strict concrete setting window to avoid shallow, uneven patterns.',
     solutionSpecs: [
-      'Obtained Whittlesea Council Crossover permit and conducted Dial Before You Dig utility mapping inquiries.',
-      'Used precise hand-shoveling to locate and safeguard the underlying telecom conduit lines.',
-      'Constructed full timber expansion joint boundaries separating council curb from private driveway boundary.',
+      'Conducted 160mm subgrade scraping and laid a 100mm compacted crushed aggregate road base.',
+      'Engineered slab strength with SL82 reinforcing steel mesh elevated on 50/65mm spacers.',
+      'Poured 32MPa concrete mixed with integral slate grey liquid color pigment.',
+      'Applied decorative slate texture mats systematically during the plastic phase of concrete curing.'
     ],
     materialsUsed: [
-      '32MPa municipal-grade aggregate concrete mix',
-      'SL82 structural mesh centered on 75mm plastic chairs',
-      '12mm bitumen impregnated expansion joint filler board',
-      'Industrial non-slip curing compound sealer',
+      '32MPa Integrally Coloured (Slate Grey) concrete mix',
+      'SL82 structural reinforcing steel mesh',
+      'Dark charcoal powder release agent (for highlight shading)',
+      'High-solids semi-gloss acrylic sealer (UV and oil resistant)'
     ],
     stepDetail: {
-      excavation: 'Sawcut the road interface asphalt cleanly. Excavated the old tarmac and unstable clay to a uniform depth of 150mm, manually smoothing around high-priority service utility ducts.',
-      steelReinforcement: 'Laid heavy SL82 structural mesh. Drilled and epoxied 16mm steel dural-dowels directly into the adjacent concrete curb to avoid shifting of joint sections over time.',
-      pourAndFinishing: 'Poured 32MPa concrete with strict 2-3% fall mapping. Stamped flat-troweled side borders and applied a heavy broom texture finish to guarantee vehicle grip under wet coastal conditions.',
-      curingAndSealer: 'Clean-cut neat 25mm deep control joints to manage core drying stress. Hand-painted the fresh slab with specialized curing compound to retard water moisture evaporation, letting it reach full civil compression load metrics.',
-    },
-  },
+      excavation: 'Excavated 160mm of clay loam. Rolled and compacted the subgrade, then laid a 100mm depth of Fine Crushed Rock (FCR), compacting it to 98% density to prevent settling.',
+      steelReinforcement: 'Set up durable F4 timber formwork and installed SL82 steel mesh on plastic chairs, incorporating starter bars tied back into the garage entry slab.',
+      pourAndFinishing: 'Poured the integrally colored concrete, screeded, and bull-floated the surface. Applied a dry-shake charcoal release agent before stamping the surface systematically with heavy polyurethane flagstone mats.',
+      curingAndSealer: 'Pressure-washed the release agent 24 hours later to expose the beautiful dual-tone shaded flagstone grooves. Cut control joints and sealed with two coats of premium acrylic sealer.'
+    }
+  }
 ];

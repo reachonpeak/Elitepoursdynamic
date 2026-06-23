@@ -5,17 +5,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Phone, Menu, X, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { businessDetails } from '../data/websiteData';
 
 interface HeaderProps {
   currentPage: string;
   onNavigate: (page: string) => void;
-  isInitialLoading?: boolean;
-  loaderStep?: number;
 }
 
-export default function Header({ currentPage, onNavigate, isInitialLoading = false, loaderStep = 1 }: HeaderProps) {
+export default function Header({ currentPage, onNavigate }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -46,13 +43,7 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
 
   return (
     <>
-      <motion.nav
-        initial={{ opacity: 0, y: -10 }}
-        animate={isInitialLoading && loaderStep < 5 
-          ? { opacity: 0, y: -10 } 
-          : { opacity: 1, y: 0 }
-        }
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           mobileMenuOpen
             ? 'bg-transparent py-4 border-b border-transparent shadow-none'
@@ -67,18 +58,18 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
           <div className={`flex-shrink-0 flex items-center transition-opacity duration-300 ${
             mobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}>
-            <motion.a
+            <a
               href="#"
               onClick={(e) => handleLinkClick(e, 'home')}
-              initial={{ opacity: 0, x: -10 }}
-              animate={isInitialLoading && loaderStep < 5 ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: isInitialLoading ? 0.1 : 0, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-2.5 sm:gap-3.5 group"
             >
               <img
-                src="/logo.png"
+                src="https://img1.wsimg.com/isteam/ip/426ef587-78bb-4986-95b4-3c780d59c7a8/IMG_1163.png"
                 alt="Elite Pour Dynamics Logo"
                 className="h-10 w-10 sm:h-11 sm:w-11 object-contain border border-brand-accent/25 rounded-full group-hover:border-brand-accent/60 transition-colors shrink-0"
+                onError={(e) => {
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
               />
               <div className={`font-display font-black text-lg sm:text-xl tracking-wider uppercase leading-none transition-colors ${
                 isSolid ? 'text-brand-text group-hover:text-brand-accent' : 'text-white group-hover:text-brand-accent'
@@ -88,25 +79,16 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
                   Dynamics
                 </span>
               </div>
-            </motion.a>
+            </a>
           </div>
 
           {/* Center Column: Desktop Nav Links */}
           <div className="hidden lg:flex items-center justify-center flex-grow mx-8">
             <ul className="flex items-center gap-5 xl:gap-7">
-              {navItems.map((item, idx) => {
+              {navItems.map((item) => {
                 const isActive = currentPage === item.id;
                 return (
-                  <motion.li 
-                    key={item.id}
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={isInitialLoading && loaderStep < 5 ? { opacity: 0, y: -8 } : { opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.45,
-                      delay: isInitialLoading ? 0.15 + (idx * 0.05) : 0,
-                      ease: [0.22, 1, 0.36, 1]
-                    }}
-                  >
+                  <li key={item.id}>
                     <a
                       href={`#/${item.id}`}
                       onClick={(e) => handleLinkClick(e, item.id)}
@@ -123,7 +105,7 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
                         isActive ? 'w-full' : 'w-0 group-hover:w-full'
                       }`} />
                     </a>
-                  </motion.li>
+                  </li>
                 );
               })}
             </ul>
@@ -132,33 +114,31 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
           {/* Right Column: Call, Free Quote, and Hamburger */}
           <div className="flex items-center gap-4 sm:gap-6 justify-end flex-shrink-0">
             {/* Quick Contact Link */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={isInitialLoading && loaderStep < 5 ? { opacity: 0, scale: 0.95 } : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: isInitialLoading ? 0.45 : 0, ease: [0.22, 1, 0.36, 1] }}
-              className={`transition-opacity duration-300 ${
-                mobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
-              }`}
-            >
+            <div className={`transition-opacity duration-300 ${
+              mobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            }`}>
               <a
                 href="tel:+61455217023"
-                className="inline-flex items-center gap-2 py-2 px-3.5 sm:py-2.5 sm:px-5 rounded-full bg-[#E07B39] hover:bg-[#B35E24] border border-[#E07B39] text-white shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group"
+                className={`inline-flex items-center gap-2 py-1.5 px-3 rounded-full border transition-all duration-200 group ${
+                  isSolid 
+                    ? 'border-brand-border/40 hover:bg-brand-surface' 
+                    : 'border-white/10 hover:bg-white/5'
+                }`}
                 aria-label="Call Elite Pour Dynamics"
               >
-                <Phone className="h-3.5 w-3.5 text-white fill-white stroke-none group-hover:scale-110 transition-transform" />
-                <span className="font-sans text-[10px] sm:text-[11px] font-extrabold tracking-wider text-white uppercase">
-                  Call 0455 217 023
+                <Phone className="h-3.5 w-3.5 text-brand-accent fill-brand-accent stroke-none group-hover:scale-110 transition-transform" />
+                <span className={`inline-block font-sans text-[11px] font-bold tracking-wider transition-colors ${
+                  isSolid ? 'text-brand-text-muted group-hover:text-brand-text' : 'text-white/80 group-hover:text-white'
+                }`}>
+                  +61 455 217 023
                 </span>
               </a>
-            </motion.div>
+            </div>
 
             {/* Quote Action call out */}
-            <motion.a
+            <a
               href="#/contact"
               onClick={(e) => handleLinkClick(e, 'contact')}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={isInitialLoading && loaderStep < 5 ? { opacity: 0, scale: 0.95 } : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: isInitialLoading ? 0.55 : 0, ease: [0.22, 1, 0.36, 1] }}
               className={`hidden sm:inline-flex items-center gap-2 rounded-full py-1 pl-4.5 pr-1 text-xs font-semibold tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-md ${
                 currentPage === 'contact'
                   ? 'bg-brand-accent text-white'
@@ -172,7 +152,7 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
               <span className="flex h-7.5 w-7.5 items-center justify-center rounded-full bg-white transition-transform">
                 <ArrowRight className="h-3.5 w-3.5 text-black" />
               </span>
-            </motion.a>
+            </a>
 
             {/* Mobile hamburger menu toggler */}
             <button
@@ -216,7 +196,7 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
             </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Mobile Menu Drawer (Dark Warm Theme) */}
       <div
@@ -286,7 +266,7 @@ export default function Header({ currentPage, onNavigate, isInitialLoading = fal
         {/* Subtle Watermark Branding */}
         <div className="absolute bottom-8 opacity-[0.03] flex flex-col items-center gap-1 pointer-events-none select-none">
           <img
-            src="/logo.png"
+            src="https://img1.wsimg.com/isteam/ip/426ef587-78bb-4986-95b4-3c780d59c7a8/IMG_1163.png"
             alt=""
             className="h-9 w-9 object-contain filter invert"
           />

@@ -43,7 +43,7 @@ export interface QuoteEstimate {
 export interface ProjectItem {
   id: string;
   title: string;
-  category: 'driveways' | 'masonry' | 'slabs' | 'epoxy';
+  category: 'exposed-aggregate' | 'plain-concrete' | 'stamped-concrete' | 'house-slabs' | 'shed-slabs' | 'retaining-walls' | 'epoxy' | 'landscaping';
   location: string;
   image: string;
   dimensions: string;

@@ -156,15 +156,15 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
                   <div className="inline-flex items-center gap-2.5 mb-3">
                     <span className="block w-5 h-[2px] bg-brand-accent animate-pulse" />
                     <span className="font-display text-[10px] tracking-[0.25em] text-brand-accent uppercase font-bold">
-                      Contact Us
+                      Direct Request
                     </span>
                   </div>
 
                   <h3 className="font-display text-3xl font-bold uppercase tracking-tight text-brand-text mb-2">
-                    Get a Free Quote!
+                    Request Free On-Site Measure
                   </h3>
                   <p className="text-brand-text-muted text-xs sm:text-sm leading-relaxed mb-6 font-light font-sans">
-                    We stay in constant communication with our customers until the job is done. To get a free quote, or if you have questions or special requests, just drop us a line.
+                    Fill out your dimensions. Attach terrain drawings, landscaping layout sketches, or digital files. All Melbourne on-site measure assessments are **100% free of charge**.
                   </p>
                 </div>
 
@@ -284,7 +284,7 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
                 {/* File Attachment interface */}
                 <div className="space-y-3 pt-2">
                   <span className="text-[10px] font-semibold text-brand-text uppercase tracking-[0.15em] block">
-                    Attach Design Layout Blueprints or Photos
+                    Upload Project Photos
                   </span>
 
                   <input
@@ -304,8 +304,8 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
                   >
                     <UploadCloud className="h-7 w-7 text-brand-text-dim" />
                     <span className="text-xs text-brand-text-muted font-sans text-center">
-                      <span className="text-brand-accent font-bold block mb-0.5">Click to Attach Layout Sketches</span>
-                      Supports PDF, photos or landscape plans up to 10MB
+                      <span className="text-brand-accent font-bold block mb-0.5">Click to Upload Project Photos</span>
+                      Photos will be sent to the owners via email along with your other details
                     </span>
                   </button>
 
@@ -432,16 +432,16 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
             <div className="bg-brand-surface border border-brand-border p-6 sm:p-8 rounded-sm shadow-sm flex flex-col gap-4">
               <h4 className="font-display text-lg font-bold uppercase text-brand-text tracking-wide flex items-center gap-2">
                 <MapPin className="h-4.5 w-4.5 text-brand-text" />
-                <span>Better yet, see us in person!</span>
+                <span>Our Wollert Precinct Base</span>
               </h4>
               <p className="text-xs text-brand-text-muted leading-relaxed font-light">
-                We stay in constant communication with our customers until the job is done. To get a free quote, or if you have questions or special requests, just drop us a line.
+                We are headquartered in Wollert, servicing Melbourne's growing northern and western suburbs with premium heavy-duty concrete foundations and aggregate driveways.
               </p>
               
               <div className="relative w-full h-[220px] rounded-sm overflow-hidden border border-brand-border shadow-inner group">
                 <iframe
                   title="Elite Pour Dynamics Google Maps Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.4550882655383!2d144.9963884!3d-37.5935919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad64dac0ac363d1%3A0x8fd5c6ae8e89b955!2sElite%20Pour%20dynamics!5e0!3m2!1sen!2sau!4v1718360000000!5m2!1sen!2sau"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.4550882655383!2d144.9963884!3d-37.5935919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad64dac0ac363d1%3A0x8fd5c6ae8e89b955!2sElitepour%20dynamics!5e0!3m2!1sen!2sau!4v1718360000000!5m2!1sen!2sau"
                   width="100%"
                   height="100%"
                   className="border-0 filter grayscale-[15%] contrast-[105%] transition-all group-hover:grayscale-0 duration-500"

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
 
 /* ---------------- WordsPullUp ---------------- */
@@ -83,17 +83,9 @@ export const WordsPullUpMultiStyle = ({ segments, className = "", style }: Words
 /* ---------------- PrismaHero ---------------- */
 interface PrismaHeroProps {
   onEstimatorClick?: () => void;
-  isInitialLoading?: boolean;
-  loaderStep?: number;
 }
 
-const PrismaHero = ({ onEstimatorClick, isInitialLoading = false, loaderStep = 1 }: PrismaHeroProps) => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollY } = useScroll();
-  // Map scroll value to a subtle parallax offset (0 to 120 pixels movement at 1000 pixels scroll height)
-  const y = useTransform(scrollY, [0, 1000], [0, 120]);
-
+const PrismaHero = ({ onEstimatorClick }: PrismaHeroProps) => {
   const handleEstimatorClick = () => {
     if (onEstimatorClick) {
       onEstimatorClick();
@@ -113,14 +105,11 @@ const PrismaHero = ({ onEstimatorClick, isInitialLoading = false, loaderStep = 1
 
 
   return (
-    <section ref={heroRef} className="h-screen w-full relative">
+    <section className="h-screen w-full relative">
       <div className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-[2rem] border-[3px] border-white/5 shadow-2xl">
         
-        {/* Background image container with subtle slow-pan animation and real-time scroll parallax */}
-        <motion.div 
-          style={{ y }}
-          className="absolute -inset-y-16 left-0 right-0 z-0 overflow-hidden pointer-events-none"
-        >
+        {/* Background image container with subtle slow-pan animation */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <style dangerouslySetInnerHTML={{__html: `
             @keyframes heroPan {
               0% { transform: scale(1.06) translate(0, 0); }
@@ -130,18 +119,11 @@ const PrismaHero = ({ onEstimatorClick, isInitialLoading = false, loaderStep = 1
               animation: heroPan 30s ease-in-out infinite alternate;
             }
           `}} />
-          <motion.div 
-            initial={{ filter: "blur(30px)", opacity: 0 }}
-            animate={isInitialLoading && loaderStep < 4 ? { filter: "blur(30px)", opacity: 0 } : { filter: "blur(0px)", opacity: 1 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 overflow-hidden"
-          >
-            <div 
-              className="w-full h-full bg-cover bg-center animate-hero-pan transform-gpu"
-              style={{ backgroundImage: `url('/images/hero-1.jpg')` }}
-            />
-          </motion.div>
-        </motion.div>
+          <div 
+            className="absolute inset-0 bg-cover bg-center animate-hero-pan"
+            style={{ backgroundImage: `url('https://img1.wsimg.com/isteam/ip/426ef587-78bb-4986-95b4-3c780d59c7a8/IMG_9470.jpeg')` }}
+          />
+        </div>
 
         {/* Noise overlay */}
         <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-overlay bg-black/15" />
@@ -155,55 +137,33 @@ const PrismaHero = ({ onEstimatorClick, isInitialLoading = false, loaderStep = 1
           <div className="grid grid-cols-12 items-end gap-6 sm:gap-8">
             
             {/* Massive visual display header (Col span 12 to 8) */}
-            <div className="col-span-12 lg:col-span-8 overflow-hidden select-none">
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={isInitialLoading && loaderStep < 3
-                  ? { opacity: 0, y: 15 }
-                  : { opacity: 1, y: 0 }
-                }
-                transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-white/10 border border-white/20 backdrop-blur-md rounded-full text-white text-[10px] sm:text-xs font-mono tracking-[0.2em] uppercase font-bold mb-6 shadow-inner"
+            <div className="col-span-12 lg:col-span-8">
+              <h1
+                className="font-medium leading-[0.85] tracking-[-0.07em] text-[25vw] sm:text-[23vw] md:text-[21vw] lg:text-[18vw] xl:text-[17vw] 2xl:text-[16vw] uppercase text-left selection:bg-brand-accent/30"
+                style={{ color: "#E1E0CC", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                <img src="/logo.png" className="h-5 w-5 object-contain rounded-full border border-white/30" alt="EPD Logo" />
-                <span>PRECISION IN EVERY POUR</span>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, filter: "blur(8px) brightness(0.25)" }}
-                animate={isInitialLoading && loaderStep < 3
-                  ? { opacity: 0, filter: "blur(8px) brightness(0.25)" }
-                  : { opacity: 1, filter: "blur(0px) brightness(1)" }
-                }
-                transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <h1
-                  className="font-medium leading-[0.85] tracking-[-0.07em] text-[25vw] sm:text-[23vw] md:text-[21vw] lg:text-[18vw] xl:text-[17vw] 2xl:text-[16vw] uppercase text-left selection:bg-brand-accent/30"
-                  style={{ color: "#E1E0CC", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-                >
-                  <WordsPullUp text="ELITE" showAsterisk />
-                </h1>
-              </motion.div>
+                <WordsPullUp text="ELITE" showAsterisk />
+              </h1>
             </div>
 
             {/* Information card and pill call to action (Col span 12 to 4) */}
             <div className="col-span-12 flex flex-col gap-6 pb-2 lg:col-span-4 lg:pb-6">
               
               <motion.p
-                initial={{ y: 15, opacity: 0 }}
-                animate={isInitialLoading && loaderStep < 5 ? { y: 15, opacity: 0 } : { y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: isInitialLoading ? 0.2 : 0.5, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="text-xs text-[#E1E0CC]/80 sm:text-sm md:text-base font-light text-left leading-[1.25]"
                 style={{ color: "rgba(225, 224, 204, 0.8)", lineHeight: 1.25, fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                High-quality driveways, house slabs, footpaths and decorative concrete built to last.
+                Elite Pour Dynamics is Melbourne's premium crew of concrete specialists, pouring perfection. We craft high-quality residential slabs, premium exposed aggregate driveways, and structural block retaining walls engineered to last.
               </motion.p>
 
               {/* Pill Button precisely aligned to the layout design */}
               <motion.div
-                initial={{ y: 15, opacity: 0 }}
-                animate={isInitialLoading && loaderStep < 5 ? { y: 15, opacity: 0 } : { y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: isInitialLoading ? 0.32 : 0.7, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="flex items-center"
               >
                 <button

@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Core structural layouts
 import Header from './components/Header';
@@ -22,6 +23,7 @@ import ContactPage from './pages/ContactPage';
 import { servicesData } from './data/websiteData';
 
 export default function App() {
+  const [isInitialLoading, setIsInitialLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<string>('home');
   const [selectedServiceId, setSelectedServiceId] = useState<string>(servicesData[0].id);
   const [prefilledQuote, setPrefilledQuote] = useState<{
@@ -128,6 +130,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-brand-text font-sans antialiased overflow-x-hidden selection:bg-brand-accent/20 selection:text-brand-text flex flex-col justify-between">
+
+
       <div>
         {/* Navigation Bar with routing controls */}
         <Header currentPage={currentPage} onNavigate={handleNavigate} />

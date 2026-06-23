@@ -33,7 +33,7 @@ export default function GalleryPage() {
           <span className="hidden sm:inline-block text-zinc-300">•</span>
           <div className="flex items-center gap-2">
             <Award className="h-4 w-4" />
-            <span>Conforming to AS3600 Standards</span>
+            <span>Victoria Concrete Code Approved</span>
           </div>
           <span className="hidden sm:inline-block text-zinc-300">•</span>
           <div className="flex items-center gap-2">

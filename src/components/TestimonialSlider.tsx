@@ -150,27 +150,7 @@ export default function TestimonialSlider() {
           </div>
         </motion.div>
 
-        {/* Call to Map Link Block with Scroll Trigger */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-center mt-8 bg-brand-surface border border-brand-border p-5 rounded-sm flex flex-col sm:flex-row justify-between items-center gap-4 shadow-sm"
-        >
-          <div className="flex items-center gap-2">
-            <span className="text-brand-text-muted text-xs sm:text-sm font-sans">Our pride shows in every driveway. Examine our active Google reviews map coordinates.</span>
-          </div>
-          
-          <a
-            href="https://maps.google.com/maps?cid=10364408570481064277"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs uppercase font-mono tracking-widest text-brand-accent hover:text-brand-text font-bold bg-white px-4 py-3 rounded-sm border border-brand-border hover:bg-brand-surfaceTransition shadow-sm transition-all"
-          >
-            Audit Map G-Reviews →
-          </a>
-        </motion.div>
+
 
       </div>
     </section>

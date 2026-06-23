@@ -6,8 +6,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  Eye, 
-  MapPin, 
   ChevronRight, 
   ChevronLeft, 
   X, 
@@ -18,142 +16,275 @@ import {
 } from 'lucide-react';
 import { ProjectItem } from '../types';
 
-// Concrete projects portfolio matching GoDaddy's Melbourne operations
+// Concrete projects portfolio matching actual Melbourne operations
 const projectsData: ProjectItem[] = [
   {
     id: 'proj-1',
-    title: 'Wollert Exclusive Exposed Aggregate Driveway',
-    category: 'driveways',
+    title: 'Wollert Premium Garden Shed Slab',
+    category: 'shed-slabs',
     location: 'Wollert, VIC 3750',
-    image: '/images/gallery/gallery-01.jpg',
-    beforeImage: '/images/gallery/gallery-20.jpg',
-    dimensions: '180 sqm',
-    completion: 'March 2026',
+    image: '/images/shed_slab_after_finished.jpeg',
+    beforeImage: '/images/shed_slab_before_reinforcement.jpeg',
+    dimensions: '24 sqm',
+    completion: 'June 2026',
     specs: [
-      '32MPa Premium Exposed Aggregate',
-      'Class 3 Compaction Crushed Rock Sub-Base',
+      '32MPa High-Strength Structural Concrete',
+      'Rigid F4 formwork setup with deep pegs',
       'Single-layer SL82 High-Tensile Steel Mesh',
-      'UV Stabilized Acrylic Semi-Gloss Curing Sealer'
+      'Precision laser-levelled tolerance within +-2mm'
     ],
-    description: 'This premium exposed aggregate driveway features our signature river pebble and charcoal granite stone blend. Formulated to resist point loading for heavy domestic SUVs, the pour was executed with laser-guided falls to channel rainfall safely away from the residential foundation structural border.',
-    testimonialId: 'rev-1'
+    description: 'Engineered backyard shed slab designed for structural equipment load. Features thorough subgrade compaction, moisture vapor barrier installation, and precise edge tooling to prevent cracks.',
   },
-  {
-    id: 'proj-2',
-    title: 'High-Gloss Flake Epoxy Double Garage Floor',
-    category: 'epoxy',
-    location: 'Wollert, VIC 3750',
-    image: '/images/gallery/gallery-02.jpg',
-    dimensions: '42 sqm',
-    completion: 'April 2026',
-    specs: [
-      'Industrial Polyurethane self-levelling epoxies',
-      'Granite-Look Heavy Color Flake Broadcast',
-      'Hot-Tire Pick-Up Resistant Primer Base',
-      'Slip-Resistant Glass Bead Micro-Additive Dual Finish'
-    ],
-    description: 'Executed for high chemical resilience and premium style. The concrete subgrade was first diamond-ground to an open profile, then patched with expansion-joint polymer to secure a seamless, non-porous structure before broadcasting standard metallic charcoal flake.',
-    testimonialId: 'rev-3'
-  },
-  {
-    id: 'proj-3',
-    title: 'Reinforced Concrete Retaining Boundary Wall',
-    category: 'masonry',
-    location: 'Craigieburn, VIC 3064',
-    image: '/images/gallery/gallery-03.jpg',
-    dimensions: '22m long x 1.4m high',
-    completion: 'May 2026',
-    specs: [
-      'Core-filled structural concrete blocks',
-      'Internal N12 Steel Starter Bars at 400mm centers',
-      'Slotted PVC Subsoil ag-pipe drainage system',
-      'Architectural Charcoal Render SealingCoat'
-    ],
-    description: 'Constructed under strict structural engineering parameters to secure a sloped backyard boundary. Soil pressure was safely counteracted via deep-drilled concrete piers and structural starter bar integrations, finished with professional geofabric drainage layers.',
-  },
+
   {
     id: 'proj-4',
-    title: 'Textured Stamped Flagstone Patio & BBQ Crossover',
-    category: 'driveways',
-    location: 'South Morang, VIC 3752',
-    image: '/images/gallery/gallery-04.jpg',
-    dimensions: '65 sqm',
-    completion: 'April 2026',
+    title: 'Wollert Decorative Exposed Aggregate Side Pathway',
+    category: 'exposed-aggregate',
+    location: 'Wollert, VIC 3750',
+    image: '/images/exposed_aggregate_side_pathway.jpeg',
+    dimensions: '35 sqm',
+    completion: 'May 2026',
     specs: [
-      'Flagstone Interlocking Stamp Mold Impressions',
-      'UV-Safe Color powder release agents',
-      'Deep expansion joint control cuts at 2.5m centers',
-      'High-solids clear penetrant wet-look sealer finish'
+      'Charcoal and river pebble aggregate blend',
+      'Acid washed post-cure to reveal stone texture',
+      'Concrete sleeper plinth border integration',
+      'Dual-coat UV stabilized acrylic sealer'
     ],
-    description: 'Designed as a beautiful, weed-free brick patio alternative. We poured 110mm standard concrete mix, added high-end slate patterns with interlocking stamp plates, and hand-highlighted the rock crevices for a pristine, ancient flagstone tone.',
+    description: 'Premium exposed aggregate pathway along the side of a residential house. Combines structural durability with slip-resistant natural rock texture, sloped for drainage.',
   },
   {
     id: 'proj-5',
-    title: 'Heavy Machinery Base Slab & Foundation',
-    category: 'slabs',
-    location: 'Campbellfield Industrial Park, VIC 3061',
-    image: '/images/gallery/gallery-05.jpg',
-    dimensions: '120 sqm',
-    completion: 'February 2026',
+    title: 'Wollert Exposed Aggregate Backyard Patio',
+    category: 'exposed-aggregate',
+    location: 'Wollert, VIC 3750',
+    image: '/images/exposed_aggregate_play_area.jpeg',
+    dimensions: '80 sqm',
+    completion: 'May 2026',
     specs: [
-      'Heavy-duty 40_20 32MPa High-Strength Structural concrete',
-      'Dual-layer SL92 Engineering Steel Meshes',
-      'Deep compacted F1 class base rock (200mm depth)',
-      'Perimeter keyway footing support load channels'
+      '32MPa high density decorative stone mix',
+      'Medium aggregate exposure for slip resistance',
+      'Tooled expansion control joint cuts',
+      'Seamless border integration with play turf'
     ],
-    description: 'Constructed as an anchor pad for localized CNC plasma and heavy steel stamping equipment. Poured to a standard thickness of 150mm with massive load distribution perimeter borders, reinforcing key intersection points with extra starter cages.',
+    description: 'A gorgeous decorative stone patio wrapping around the backyard play area. Designed to offer a robust, maintenance-free, and weed-free entertaining space.',
   },
   {
     id: 'proj-6',
-    title: 'Council Standard Suburban Crossover & Kerb Repair',
-    category: 'slabs',
-    location: 'Epping, VIC 3076',
-    image: '/images/gallery/gallery-06.jpg',
-    dimensions: '35 sqm',
-    completion: 'January 2026',
+    title: 'Wollert Exposed Aggregate Landscaping Surrounds',
+    category: 'exposed-aggregate',
+    location: 'Wollert, VIC 3750',
+    image: '/images/exposed_aggregate_trampoline_area.jpeg',
+    dimensions: '95 sqm',
+    completion: 'May 2026',
     specs: [
-      'Council approved 150mm thick driveway crossing standard',
-      'S82 steel mesh centered on heavy-duty pins',
-      'Melbourne municipal regulations compliant falls',
-      'Slip-resistant structured tool expansion borders'
+      'Premium decorative pebble aggregate concrete',
+      'Precision laser-levelled drainage falls',
+      'Acid washed for vibrant stone exposure',
+      'Sealed with high-solids protective coat'
     ],
-    description: 'Designed to replace an existing cracked domestic crossover. The concrete crossover was demolished, re-excavated to 150mm depth to comply with local municipality regulations, reinforced with heavy steel rods, and finished with a robust, wet-swept non-slip broom texture.'
+    description: 'Exposed aggregate pathway wrapping around backyard landscaping and trampoline area. Adds significant value and clean aesthetic borders to the garden zone.',
   },
   {
     id: 'proj-7',
-    title: 'Wollert Textured Stamped Driveway',
-    category: 'driveways',
-    location: 'Wollert, VIC 3750',
-    image: '/images/gallery/gallery-07.jpg',
-    dimensions: '85 sqm',
-    completion: 'May 2026',
+    title: 'South Morang Charcoal Stamped flagstone Driveway',
+    category: 'stamped-concrete',
+    location: 'South Morang, VIC 3752',
+    image: '/images/stamped_concrete_flagstone_driveway.jpeg',
+    dimensions: '110 sqm',
+    completion: 'April 2026',
     specs: [
-      'Textured concrete slate stamp patterns',
-      'UV-stabilized slate charcoal release agent',
-      'Dual-coat high-solids slip-resistant acrylic sealer'
+      'Precision flagstone stamp mold impressions',
+      'Integrated UV-resistant charcoal powder color release',
+      'Anti-slip high-solids clear penetrant wet-look sealer',
+      'Control joints tooled at 2.5m centers'
     ],
-    description: 'Stamped slate driveway poured in Wollert to coordinate with modern home architectural features. Features high traction and custom slate design aesthetics.'
+    description: 'Immaculate stamped concrete driveway reproducing high-end slate flagstone textures. Weed-free, low-maintenance alternative providing rustic paving style.',
   },
   {
     id: 'proj-8',
-    title: 'Epping Exposed Aggregate Footpath',
-    category: 'driveways',
+    title: 'South Morang Stamped Driveway - Detail Angle',
+    category: 'stamped-concrete',
+    location: 'South Morang, VIC 3752',
+    image: '/images/stamped_concrete_flagstone_driveway_2.jpeg',
+    dimensions: '110 sqm',
+    completion: 'April 2026',
+    specs: [
+      'Interlocking slate flagstone concrete stamp molds',
+      'Integrated UV-safe charcoal powder release agent',
+      'High-solids clear penetrant wet-look sealer finish',
+      'Tooled control joints and edges'
+    ],
+    description: 'Alternate angle view showcasing the clean, interlocking stone crevices and premium charcoal aesthetic matching the brick residence facade.',
+  },
+  {
+    id: 'proj-9',
+    title: 'Craigieburn Timber Sleeper Retaining Wall',
+    category: 'retaining-walls',
+    location: 'Craigieburn, VIC 3064',
+    image: '/images/wooden_sleeper_retaining_wall.jpeg',
+    dimensions: '18m long x 0.8m high',
+    completion: 'June 2026',
+    specs: [
+      'H4 treated pine heavy timber sleepers',
+      'Hot-dip galvanized steel H and C upright posts',
+      'Backfilled drainage gravel and slotted ag-pipe',
+      'Cored pier concrete foundations for uprights'
+    ],
+    description: 'Robust boundary retaining wall using treated timber sleepers. Designed to secure soil grade heights in front of wooden fence, finished with slotted ag-pipe sub-surface drainage.',
+  },
+  {
+    id: 'proj-10',
+    title: 'Craigieburn Timber Sleeper Wall & Flatwork',
+    category: 'retaining-walls',
+    location: 'Craigieburn, VIC 3064',
+    image: '/images/wooden_sleeper_retaining_wall_wide.jpeg',
+    dimensions: '25m long / 120 sqm concrete',
+    completion: 'June 2026',
+    specs: [
+      'Heavy-duty treated timber sleepers',
+      'Galvanized structural steel upright supports',
+      'Moisture drainage geo-textile layer',
+      'Plain grey concrete driveway flatwork'
+    ],
+    description: 'Wider view of timber sleeper boundary retaining wall and associated grey concrete driveway area. Poured and built to direct water run-off into main drainage points.',
+  },
+  {
+    id: 'proj-11',
+    title: 'Wollert Slate Textured Concrete Sleeper Wall',
+    category: 'retaining-walls',
+    location: 'Wollert, VIC 3750',
+    image: '/images/concrete_sleeper_retaining_wall.jpeg',
+    dimensions: '15m long x 1.2m high',
+    completion: 'May 2026',
+    specs: [
+      'Slate-textured reinforced concrete sleepers',
+      'Heavy galvanized steel upright posts',
+      'Sub-surface agricultural pipe drainage',
+      'Deep cored piers core-filled with 32MPa mix'
+    ],
+    description: 'Grey textured concrete sleeper retaining wall providing structural earth retention. Reinforced steel posts ensure complete stability under heavy slope pressure.',
+  },
+  {
+    id: 'proj-12',
+    title: 'Campbellfield Plain Concrete Side Pathways',
+    category: 'plain-concrete',
+    location: 'Campbellfield, VIC 3061',
+    image: '/images/plain_concrete_around_house.jpeg',
+    dimensions: '55 sqm',
+    completion: 'June 2026',
+    specs: [
+      '25MPa Normal Grey Class Concrete',
+      'Single-layer SL72 steel mesh',
+      'Hand-tooled expansion joints at 1.5m intervals',
+      'Non-slip stipple broom finish'
+    ],
+    description: 'Clean grey concrete side paths running alongside red brick residence. Poured with falls away from the house foundations to prevent water ingress.',
+  },
+  {
+    id: 'proj-13',
+    title: 'Campbellfield Plain Concrete Pathway Detail',
+    category: 'plain-concrete',
+    location: 'Campbellfield, VIC 3061',
+    image: '/images/plain_concrete_around_house_2.jpeg',
+    dimensions: '55 sqm',
+    completion: 'June 2026',
+    specs: [
+      '25MPa standard concrete mix',
+      'Uniform non-slip broom texture',
+      'Deep formwork leveling',
+      'Clean tooled edge margins'
+    ],
+    description: 'Detailed angle of plain concrete pathway during final clean-up phase. Formwork removed showing solid concrete depth and level falls.',
+  },
+  {
+    id: 'proj-14',
+    title: 'Epping Normal Grey Plain Concrete Driveway',
+    category: 'plain-concrete',
     location: 'Epping, VIC 3076',
-    image: '/images/gallery/gallery-08.jpg',
+    image: '/images/plain_concrete_long_driveway.jpeg',
+    dimensions: '140 sqm',
+    completion: 'June 2026',
+    specs: [
+      '125mm thick 32MPa heavy-duty concrete mix',
+      'SL82 high-tensile steel mesh reinforcement',
+      'Council standard crossover ramp details',
+      'Slip-resistant medium broom finish texture'
+    ],
+    description: 'Long residential driveway leading to garage, poured with high-strength concrete to resist heavy vehicle point-loads and satisfy crossover parameters.',
+  },
+  {
+    id: 'proj-15',
+    title: 'Epping Plain Concrete Side Driveway',
+    category: 'plain-concrete',
+    location: 'Epping, VIC 3076',
+    image: '/images/plain_concrete_side_driveway.jpeg',
     dimensions: '45 sqm',
     completion: 'June 2026',
     specs: [
-      'Exposed river aggregate granite blend',
-      'Acid washed surface finish',
-      'Slip-resistant concrete seal protection'
+      'Standard grey 25MPa concrete',
+      'Steel reinforcement mesh layout',
+      'Deep compacted roadbase base',
+      'Smooth tooled border details'
     ],
-    description: 'Beautiful exposed aggregate footpath poured alongside home garden and boundary borders, presenting clean lines and natural stone design highlights.'
+    description: 'Pathway/driveway extension alongside red brick residence boundary next to high hedge, providing a clean, durable pedestrian and light vehicle access route.',
+  },
+  {
+    id: 'proj-16',
+    title: 'Wollert Engineered House Slab',
+    category: 'house-slabs',
+    location: 'Wollert, VIC 3750',
+    image: '/images/house_slab_finished.jpg',
+    beforeImage: '/images/residential_slabs_before.jpeg',
+    dimensions: '210 sqm',
+    completion: 'June 2026',
+    specs: [
+      'Dual-layer SL82 reinforcing steel mesh',
+      'High-density EPS waffle pod formwork',
+      '200-micron heavy-duty moisture vapor barrier',
+      'Precision laser-levelled tolerance within +-2mm'
+    ],
+    description: 'Engineered residential house slab foundation featuring high-density waffle pods, dual SL82 reinforcing steel mesh, and deep concrete piling piers.',
+  },
+
+  {
+    id: 'proj-18',
+    title: 'Wollert Backyard Landscaping & Grass Borders',
+    category: 'landscaping',
+    location: 'Wollert, VIC 3750',
+    image: '/images/landscaping_after.jpeg',
+    beforeImage: '/images/landscaping_before.jpeg',
+    dimensions: '120 sqm',
+    completion: 'May 2026',
+    specs: [
+      'Premium synthetic/natural turf installation',
+      'Excavated loam and topsoil preparation',
+      'Treated pine garden sleeper borders',
+      'Exposed aggregate perimeter pathways'
+    ],
+    description: 'Backyard landscaping work including turf layout, garden sleeper plinths, and integrated exposed aggregate walking zones to produce a modern maintenance-free yard.'
+  },
+  {
+    id: 'proj-19',
+    title: 'Wollert Metallic Designer Epoxy Garage',
+    category: 'epoxy',
+    location: 'Wollert, VIC 3750',
+    image: '/images/epoxy_garage_floor.jpeg',
+    dimensions: '45 sqm',
+    completion: 'June 2026',
+    specs: [
+      'Premium multi-layered designer metallic epoxy base',
+      'High-gloss UV protective polyaspartic topcoat',
+      'Oil, grease and chemical resistant surface',
+      'Non-slip texture additive integration'
+    ],
+    description: 'A stunning decorative metallic flake epoxy floor poured inside a newly renovated double-garage. The floor was diamond-ground to reveal aggregate pores before application, creating a mirror-like seamless finish.'
   }
 ];
 
 export default function ProjectGallery() {
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [showBefore, setShowBefore] = useState<boolean>(false);
   
   // Before & After comparison slider state (0 to 100 representing percentage slider position)
   const [sliderPosition, setSliderPosition] = useState<number>(50);
@@ -182,10 +313,14 @@ export default function ProjectGallery() {
   // Categories helper
   const categories = [
     { id: 'all', label: 'All Projects' },
-    { id: 'driveways', label: 'Exposed Aggregate & Driveways' },
-    { id: 'masonry', label: 'Masonry & Retaining Walls' },
-    { id: 'slabs', label: 'Residential & Civil Slabs' },
-    { id: 'epoxy', label: 'High Gloss Epoxy' }
+    { id: 'exposed-aggregate', label: 'Exposed Aggregate' },
+    { id: 'plain-concrete', label: 'Plain Concrete (Normal Grey)' },
+    { id: 'stamped-concrete', label: 'Stamped Concrete' },
+    { id: 'house-slabs', label: 'House Slabs' },
+    { id: 'shed-slabs', label: 'Shed Slabs' },
+    { id: 'retaining-walls', label: 'Retaining Walls' },
+    { id: 'epoxy', label: 'High Gloss Epoxy' },
+    { id: 'landscaping', label: 'Landscaping & Turf' }
   ];
 
   // Slide to next project in Lightbox
@@ -194,6 +329,7 @@ export default function ProjectGallery() {
     const currentIndex = filteredProjects.findIndex(p => p.id === selectedProject.id);
     const nextIndex = (currentIndex + 1) % filteredProjects.length;
     setSelectedProject(filteredProjects[nextIndex]);
+    setShowBefore(false);
   };
 
   // Slide to previous project in Lightbox
@@ -202,6 +338,7 @@ export default function ProjectGallery() {
     const currentIndex = filteredProjects.findIndex(p => p.id === selectedProject.id);
     const prevIndex = (currentIndex - 1 + filteredProjects.length) % filteredProjects.length;
     setSelectedProject(filteredProjects[prevIndex]);
+    setShowBefore(false);
   };
 
   // Drag interaction for before/after comparison slider
@@ -271,10 +408,10 @@ export default function ProjectGallery() {
                 <span>Interactive Workmanship Audit</span>
               </div>
               <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-brand-text leading-tight">
-                Before &amp; After: Wollert Residence Pour
+                Before &amp; After: Premium Stamped Driveway
               </h3>
               <p className="text-brand-text-muted text-xs sm:text-sm leading-relaxed font-light">
-                Use your cursor or touch swipe on the slider to slide between the **Excavated Sub-Base Reinforcement** stage (Left) and the **Final Acid-Washed Cured Exposed Aggregate** driveway surface (Right). 
+                Use your cursor or touch swipe on the slider to slide between the **Steel Reinforcement &amp; Base Preparation** stage (Left) and the **Completed Stamped Slate Driveway** layout (Right).
               </p>
               <div className="space-y-4 pt-2">
                 <div className="flex gap-3.5 items-start">
@@ -282,8 +419,8 @@ export default function ProjectGallery() {
                     <span className="font-mono text-xs font-bold text-brand-accent">01</span>
                   </div>
                   <div>
-                    <span className="text-xs font-semibold text-brand-text uppercase tracking-wide block">Excavated Roadbase Subgrade (Before)</span>
-                    <span className="text-[11px] text-brand-text-muted">Cleared clay sub-grade compacted with Class 3 structural base, SL82 steel mesh positioned centered on concrete spacers.</span>
+                    <span className="text-xs font-semibold text-brand-text uppercase tracking-wide block">Base &amp; Steel Layout (Before)</span>
+                    <span className="text-[11px] text-brand-text-muted">Heavy subgrade compaction and SL82 steel reinforcement mesh laid on concrete spacers prior to pouring.</span>
                   </div>
                 </div>
                 <div className="flex gap-3.5 items-start">
@@ -291,8 +428,8 @@ export default function ProjectGallery() {
                     <span className="font-mono text-xs font-bold text-brand-accent">02</span>
                   </div>
                   <div>
-                    <span className="text-xs font-semibold text-brand-text uppercase tracking-wide block">Final Exposed Aggregate Pour (After)</span>
-                    <span className="text-[11px] text-brand-text-muted">High density 32MPa mix, washed to reveal white granite stones, sealed with premium dual-coat UV proof protection.</span>
+                    <span className="text-xs font-semibold text-brand-text uppercase tracking-wide block">Finished Stamped Driveway (After)</span>
+                    <span className="text-[11px] text-brand-text-muted">Immaculate stamped concrete driveway replicating high-end slate flagstone textures with a dark charcoal finish.</span>
                   </div>
                 </div>
               </div>
@@ -311,19 +448,19 @@ export default function ProjectGallery() {
               >
                 {/* AFTER IMAGE (Default base, stays fully visible on the right half) */}
                 <img 
-                  src="/images/gallery/gallery-01.jpg"
-                  alt="Finished Exposed Aggregate driveway in Wollert"
+                  src="/images/driveway_slider_after.jpg"
+                  alt="Finished Stamped Slate driveway layout" 
                   className="absolute inset-0 h-full w-full object-cover pointer-events-none"
                 />
                 
                 {/* BEFORE IMAGE (Clipped block, stays fully aligned on the left half based on boundary width) */}
                 <div 
-                  className="absolute inset-0 h-full overflow-hidden pointer-events-none z-10"
+                  className="absolute inset-0 h-full overflow-hidden transition-all duration-75 pointer-events-none z-10"
                   style={{ width: `${sliderPosition}%` }}
                 >
                   <img 
-                    src="/images/gallery/gallery-20.jpg"
-                    alt="Excavation and subbase prep stage"
+                    src="/images/driveway_slider_before.jpg"
+                    alt="Steel reinforcement grid base stage" 
                     className="absolute inset-y-0 left-0 h-full object-cover pointer-events-none"
                     style={{ width: `${containerWidth}px`, maxWidth: 'none', height: '100%' }}
                   />
@@ -345,10 +482,10 @@ export default function ProjectGallery() {
 
                 {/* Stage Badges overlays */}
                 <div className="absolute top-4 left-4 bg-brand-text/80 text-white font-mono text-[9px] font-bold px-2 py-1 rounded-sm uppercase z-10">
-                  Before: Subgrade mesh / Base
+                  Before: Bobcat Excavation
                 </div>
                 <div className="absolute top-4 right-4 bg-brand-accent text-white font-mono text-[9px] font-bold px-2 py-1 rounded-sm uppercase z-10">
-                  After: Exposed Aggregate Driveway
+                  After: Finished Synthetic Turf
                 </div>
               </div>
             </div>
@@ -390,66 +527,19 @@ export default function ProjectGallery() {
                 layout
                 id={`project-${project.id}`}
                 key={project.id}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 40 }}
-                transition={{ 
-                  type: 'spring', 
-                  stiffness: 60, 
-                  damping: 18, 
-                  mass: 0.9 
-                }}
-                onClick={() => setSelectedProject(project)}
-                className="group bg-white border border-brand-border rounded-sm h-[380px] flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-gold/40 hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer transform-gpu"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
+                onClick={() => { setSelectedProject(project); setShowBefore(false); }}
+                className="group bg-white border border-brand-border rounded-sm overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer aspect-[4/3] relative"
               >
-                {/* Thumb frame */}
-                <div className="relative h-[250px] w-full overflow-hidden bg-brand-text/5 shrink-0">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    referrerPolicy="no-referrer"
-                    className="h-full w-full object-cover group-hover:scale-[1.04] transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu"
-                  />
-                  
-                  {/* Category bubble */}
-                  <span className="absolute top-4 left-4 bg-brand-text/90 text-brand-border-dim font-mono text-[9px] font-bold px-2.5 py-1 tracking-widest uppercase rounded-sm z-10 border border-brand-border/20">
-                    {project.category}
-                  </span>
-
-                  {/* Spec bubble quick tracker */}
-                  <span className="absolute bottom-4 left-4 bg-brand-accent text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase z-10 shadow-sm">
-                    {project.dimensions}
-                  </span>
-
-                  {/* Hover visual frame block */}
-                  <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,20,18,0.85)_0%,rgba(22,20,18,0.2)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-brand-text h-11 w-11 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 border border-brand-border">
-                      <Eye className="h-5 w-5 text-brand-accent" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Info block */}
-                <div className="p-5 flex-grow flex flex-col justify-between items-start">
-                  <div className="w-full">
-                    <div className="flex items-center gap-1 text-[10px] text-brand-accent font-semibold mb-1 uppercase font-mono tracking-wider">
-                      <MapPin className="h-3.5 w-3.5 shrink-0" />
-                      <span>{project.location}</span>
-                    </div>
-                    <h3 className="font-display font-bold text-lg leading-tight uppercase text-brand-text tracking-wide group-hover:text-brand-accent transition-colors truncate">
-                      {project.title}
-                    </h3>
-                  </div>
-
-                  <div className="flex items-center justify-between w-full pt-3.5 border-t border-brand-surface-2 mt-auto">
-                    <span className="text-[10px] font-mono text-brand-text-dim uppercase tracking-wider block">
-                      Built: {project.completion}
-                    </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-brand-accent inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                      Inspect Specs <ArrowRight className="h-3 w-3" />
-                    </span>
-                  </div>
-                </div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  referrerPolicy="no-referrer"
+                  className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -461,27 +551,19 @@ export default function ProjectGallery() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mt-16 bg-white border border-brand-border/60 p-5 rounded-sm flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm"
+          className="mt-16 bg-white border border-brand-border/60 p-5 rounded-sm flex items-center gap-3.5 shadow-sm"
         >
-          <div className="flex items-center gap-3.5">
-            <div className="h-10 w-10 bg-brand-accent/10 border border-brand-accent/20 rounded-sm flex items-center justify-center shrink-0 text-brand-accent">
-              <ShieldCheck className="h-5 w-5" />
-            </div>
-            <div className="text-left">
-              <h4 className="font-display font-bold uppercase text-brand-text tracking-wide text-md leading-none mb-1">
-                High-Strength Concrete Structure Alignment
-              </h4>
-              <p className="text-brand-text-muted text-[11px] font-sans">
-                All driveways, deep-footing crossovers, retaining walls, and load slabs shown above conform to AS3600 (Concrete Structures) design parameters.
-              </p>
-            </div>
+          <div className="h-10 w-10 bg-brand-accent/10 border border-brand-accent/20 rounded-sm flex items-center justify-center shrink-0 text-brand-accent">
+            <ShieldCheck className="h-5 w-5" />
           </div>
-          <a
-            href="tel:+61455217023"
-            className="text-[10px] uppercase font-mono tracking-widest text-brand-text font-bold bg-brand-surface hover:bg-white border border-brand-border px-4 py-3.5 rounded-sm shadow-sm transition-all cursor-pointer whitespace-nowrap"
-          >
-            Audit Map G-Reviews →
-          </a>
+          <div className="text-left">
+            <h4 className="font-display font-bold uppercase text-brand-text tracking-wide text-md leading-none mb-1">
+              Victorian Structurally Compliant Concrete Pours
+            </h4>
+            <p className="text-brand-text-muted text-[11px] font-sans">
+              All driveways, deep-footing crossovers, retaining walls, and load slabs shown above comply with AS3600 (Concrete Structures) civil parameters.
+            </p>
+          </div>
         </motion.div>
 
       </div>
@@ -504,116 +586,66 @@ export default function ProjectGallery() {
               initial={{ opacity: 0, y: 32, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 32, scale: 0.98 }}
-              transition={{ type: 'spring', damping: 28, stiffness: 120, mass: 0.9 }}
-              className="bg-white border border-brand-border rounded-sm w-full max-w-5xl shadow-2xl relative z-10 overflow-hidden flex flex-col lg:flex-row max-h-[90vh] lg:max-h-[85vh]"
+              transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+              className="bg-white border border-brand-border rounded-sm w-full max-w-4xl shadow-2xl relative z-10 overflow-hidden max-h-[90vh]"
             >
               {/* Top-Right Absolute Close element */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-20 h-9 w-9 bg-brand-text/70 text-white rounded-full flex items-center justify-center border border-white/20 hover:bg-brand-accent transition-all cursor-pointer"
+                className="absolute top-4 right-4 z-20 h-9 w-9 bg-brand-text/70 text-white rounded-full flex items-center justify-center border border-white/20 hover:bg-brand-accent transition-all cursor-pointer shadow-md"
                 aria-label="Close Project Detail Modal"
               >
                 <X className="h-5 w-5" />
               </button>
 
-              {/* Slider Left-Right Arrow Buttons (Overlay on visual half block) */}
+              {/* Slider Left-Right Arrow Buttons */}
               <button
                 onClick={handlePrevProject}
-                className="absolute left-4 top-1/3 sm:top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-black/40 hover:bg-brand-accent text-white flex items-center justify-center shadow-lg border border-white/10 hover:border-transparent transition-all cursor-pointer"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-black/40 hover:bg-brand-accent text-white flex items-center justify-center shadow-lg border border-white/10 hover:border-transparent transition-all cursor-pointer"
                 aria-label="Previous portfolio project"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 onClick={handleNextProject}
-                className="absolute right-4 lg:right-[36%] top-1/3 sm:top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-black/40 hover:bg-brand-accent text-white flex items-center justify-center shadow-lg border border-white/10 hover:border-transparent transition-all cursor-pointer"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-black/40 hover:bg-brand-accent text-white flex items-center justify-center shadow-lg border border-white/10 hover:border-transparent transition-all cursor-pointer"
                 aria-label="Next portfolio project"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
 
-              {/* Left Photo display panel (2/3 width on large) */}
-              <div className="relative w-full lg:w-[65%] bg-brand-text/5 overflow-hidden flex items-center justify-center h-[280px] sm:h-[400px] lg:h-auto min-h-[300px]">
+              {/* Photo display panel */}
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-brand-text/5 overflow-hidden flex items-center justify-center">
                 <img
-                  src={selectedProject.image}
+                  src={showBefore && selectedProject.beforeImage ? selectedProject.beforeImage : selectedProject.image}
                   alt={selectedProject.title}
                   referrerPolicy="no-referrer"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-all duration-300"
                 />
+
+                {/* Before/After stage toggles when beforeImage exists */}
+                {selectedProject.beforeImage && (
+                  <div className="absolute top-4 left-4 z-20 bg-black/60 backdrop-blur-xs p-1 rounded-sm border border-white/10 flex gap-1 animate-fade">
+                    <button
+                      onClick={() => setShowBefore(true)}
+                      className={`text-[9px] font-mono font-bold uppercase px-2.5 py-1 rounded-xs transition-colors cursor-pointer ${showBefore ? 'bg-brand-accent text-white font-extrabold' : 'text-zinc-300 hover:text-white'}`}
+                    >
+                      Excavation/Prep
+                    </button>
+                    <button
+                      onClick={() => setShowBefore(false)}
+                      className={`text-[9px] font-mono font-bold uppercase px-2.5 py-1 rounded-xs transition-colors cursor-pointer ${!showBefore ? 'bg-brand-accent text-white font-extrabold' : 'text-zinc-300 hover:text-white'}`}
+                    >
+                      Finished Pour
+                    </button>
+                  </div>
+                )}
                 
                 {/* Visual specifications marker scale */}
                 <div className="absolute bottom-4 left-4 bg-brand-text/85 border border-brand-border/20 text-white px-3 py-1.5 rounded-sm font-mono text-[9px] font-semibold tracking-wider uppercase select-none flex items-center gap-1.5 backdrop-blur-sm shadow-md">
                   <CheckCircle2 className="h-3 w-3 text-brand-accent" />
-                  <span>Melbourne VIC Project Audit: COMPLETED</span>
+                  <span>{showBefore ? 'Stage: Excavation & Rebar Prep' : 'Melbourne VIC Project Audit: COMPLETED'}</span>
                 </div>
-              </div>
-
-              {/* Right project metadata details (1/3 width) */}
-              <div className="w-full lg:w-[35%] p-6 sm:p-8 flex flex-col justify-between overflow-y-auto bg-brand-surface border-t lg:border-t-0 lg:border-l border-brand-border/60">
-                <div className="space-y-6">
-                  {/* Category marker */}
-                  <div>
-                    <span className="text-[10px] font-mono tracking-widest text-brand-accent uppercase font-bold px-2 py-0.5 bg-brand-accent/10 border border-brand-accent/20 rounded-md">
-                      {selectedProject.category}
-                    </span>
-                    <h3 className="font-display font-black text-2xl uppercase tracking-tight text-brand-text leading-tight mt-3">
-                      {selectedProject.title}
-                    </h3>
-                  </div>
-
-                  {/* Operational parameters cards block */}
-                  <div className="grid grid-cols-2 gap-3.5 border-y border-brand-border/50 py-4.5 bg-white px-4 rounded-sm shadow-sm select-none">
-                    <div>
-                      <span className="text-[9px] font-mono font-bold text-brand-text-dim uppercase tracking-wider block">PROJECT LOCATION</span>
-                      <span className="text-xs font-semibold text-brand-text block">{selectedProject.location}</span>
-                    </div>
-                    <div>
-                      <span className="text-[9px] font-mono font-bold text-brand-text-dim uppercase tracking-wider block">COMPLETED IN</span>
-                      <span className="text-xs font-semibold text-brand-text block">{selectedProject.completion}</span>
-                    </div>
-                    <div>
-                      <span className="text-[9px] font-mono font-bold text-brand-text-dim uppercase tracking-wider block">MEASURED AREA</span>
-                      <span className="text-xs font-bold text-brand-accent block">{selectedProject.dimensions}</span>
-                    </div>
-                    <div>
-                      <span className="text-[9px] font-mono font-bold text-brand-text-dim uppercase tracking-wider block">CIVIL PROTECTION</span>
-                      <span className="text-xs font-semibold text-brand-text block text-green-700 inline-flex items-center gap-0.5">
-                        <ShieldCheck className="h-3.5 w-3.5" /> Approved
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Project description text */}
-                  <div>
-                    <span className="text-[10px] font-mono font-bold text-brand-text-dim uppercase tracking-widest block mb-2">PROJECT DESCRIPTION</span>
-                    <p className="text-brand-text text-xs leading-relaxed font-light">
-                      {selectedProject.description}
-                    </p>
-                  </div>
-
-                  {/* Full structural specifications lists */}
-                  <div>
-                    <span className="text-[10px] font-mono font-bold text-brand-text-dim uppercase tracking-widest block mb-2.5">ENGINEERED SPECIFICATIONS</span>
-                    <ul className="space-y-2">
-                      {selectedProject.specs.map((spec, i) => (
-                        <li key={i} className="flex gap-2 items-start text-xs text-brand-text leading-relaxed">
-                          <CheckCircle2 className="h-4 w-4 text-brand-accent shrink-0 mt-0.5" />
-                          <span>{spec}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Testimonial reference, if any */}
-                {selectedProject.testimonialId && (
-                  <div className="border-t border-brand-border/60 pt-6 mt-8">
-                    <span className="text-[9px] font-mono font-bold text-brand-accent uppercase tracking-widest block mb-2.5">VERIFIED TESTIMONIAL ATTACHED</span>
-                    <p className="text-brand-text-muted text-[11px] leading-relaxed italic border-l-2 border-brand-accent pl-3">
-                      "Absolute professionals from start to finish! The communication was excellent, the base preparation was thorough, and the aggregate driveway looks outstanding."
-                    </p>
-                  </div>
-                )}
               </div>
             </motion.div>
           </div>
