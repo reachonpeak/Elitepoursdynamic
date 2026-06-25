@@ -32,6 +32,7 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   // Sync estimate data with message body
   useEffect(() => {
@@ -88,27 +89,49 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    
-    // Simulate SMTP delivery network latency
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      // Reset form variables
-      setForm({
-        name: '',
-        email: '',
-        phone: '',
-        address: '',
-        message: ''
+
+    try {
+      const formElement = formRef.current;
+      if (!formElement) return;
+
+      const submitData = new FormData(formElement);
+
+      // Append actual file objects from the file input
+      if (fileInputRef.current?.files) {
+        for (let i = 0; i < fileInputRef.current.files.length; i++) {
+          submitData.append('attachment', fileInputRef.current.files[i]);
+        }
+      }
+
+      const response = await fetch('https://formsubmit.co/ajax/info@elitepourdynamics.com.au', {
+        method: 'POST',
+        body: submitData,
       });
-      setAttachments([]);
-      onClearPrefilledQuote();
-    }, 1800);
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setForm({
+          name: '',
+          email: '',
+          phone: '',
+          address: '',
+          message: ''
+        });
+        setAttachments([]);
+        onClearPrefilledQuote();
+      } else {
+        alert('There was an issue sending your request. Please try again or call us directly.');
+      }
+    } catch {
+      alert('Network error. Please check your connection and try again, or call us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -151,7 +174,12 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleFormSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-6">
+                {/* FormSubmit configuration fields */}
+                <input type="hidden" name="_subject" value="New Quote Request — Elite Pour Dynamics Website" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_replyto" value={formData.email} />
                 <div>
                   <div className="inline-flex items-center gap-2.5 mb-3">
                     <span className="block w-5 h-[2px] bg-brand-accent animate-pulse" />
@@ -289,6 +317,7 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
 
                   <input
                     type="file"
+                    name="attachment"
                     multiple
                     ref={fileInputRef}
                     onChange={handleFileChange}
