@@ -26,7 +26,7 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
     message: ''
   });
 
-  const [attachments, setAttachments] = useState<{ name: string; size: string }[]>([]);
+  const [attachments, setAttachments] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -57,17 +57,25 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const newFiles = Array.from(e.target.files).map((f: File) => ({
-        name: f.name,
-        size: `${(f.size / (1024 * 1024)).toFixed(2)} MB`
-      }));
-      setAttachments(prev => [...prev, ...newFiles]);
-    }
+    if (!e.target.files || e.target.files.length === 0) return;
+    const incoming = Array.from(e.target.files);
+    setAttachments(prev => {
+      const updated = [...prev, ...incoming];
+      const dt = new DataTransfer();
+      updated.forEach(f => dt.items.add(f));
+      if (fileInputRef.current) fileInputRef.current.files = dt.files;
+      return updated;
+    });
   };
 
   const handleRemoveAttachment = (idx: number) => {
-    setAttachments(prev => prev.filter((_, i) => i !== idx));
+    setAttachments(prev => {
+      const updated = prev.filter((_, i) => i !== idx);
+      const dt = new DataTransfer();
+      updated.forEach(f => dt.items.add(f));
+      if (fileInputRef.current) fileInputRef.current.files = dt.files;
+      return updated;
+    });
   };
 
   const validate = () => {
@@ -89,23 +97,47 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
     return Object.keys(newErrors).length === 0;
   };
 
+  const uploadToImgBB = async (file: File): Promise<string | null> => {
+    const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
+    if (!apiKey || apiKey === 'YOUR_IMGBB_API_KEY') return null;
+
+    const body = new FormData();
+    body.append('image', file);
+
+    const res = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+      method: 'POST',
+      body,
+    });
+
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json.success ? json.data.url : null;
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-
     setIsSubmitting(true);
 
     try {
-      const formElement = formRef.current;
-      if (!formElement) return;
+      let photoUrls: string[] = [];
 
-      const submitData = new FormData(formElement);
+      if (attachments.length > 0) {
+        const results = await Promise.all(attachments.map(uploadToImgBB));
+        photoUrls = results.filter(Boolean) as string[];
+      }
 
-      // Append actual file objects from the file input
-      if (fileInputRef.current?.files) {
-        for (let i = 0; i < fileInputRef.current.files.length; i++) {
-          submitData.append('attachment', fileInputRef.current.files[i]);
-        }
+      const submitData = new FormData();
+      submitData.append('_subject', 'New Quote Request — Elite Pour Dynamics Website');
+      submitData.append('_captcha', 'false');
+      submitData.append('_replyto', formData.email);
+      submitData.append('name', formData.name);
+      submitData.append('email', formData.email);
+      submitData.append('phone', formData.phone);
+      submitData.append('address', formData.address);
+      submitData.append('message', formData.message);
+      if (photoUrls.length > 0) {
+        submitData.append('photos', photoUrls.join('\n'));
       }
 
       const response = await fetch('https://formsubmit.co/ajax/info@elitepourdynamics.com.au', {
@@ -115,14 +147,9 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
 
       if (response.ok) {
         setIsSuccess(true);
-        setForm({
-          name: '',
-          email: '',
-          phone: '',
-          address: '',
-          message: ''
-        });
+        setForm({ name: '', email: '', phone: '', address: '', message: '' });
         setAttachments([]);
+        if (fileInputRef.current) fileInputRef.current.value = '';
         onClearPrefilledQuote();
       } else {
         alert('There was an issue sending your request. Please try again or call us directly.');
@@ -159,7 +186,7 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
                 <div>
                   <h3 className="font-display text-3xl font-bold uppercase tracking-wide text-brand-text">Quote Request Received!</h3>
                   <p className="text-brand-text-muted mt-3 text-sm max-w-sm leading-relaxed font-light font-sans">
-                    Our Melbourne estimators have received your specifications. We are auditing structural loading parameters. A supervisor will call or email you back in **under 2 business hours**.
+                    Thank you! Your quote request has been received. Our team will contact you as soon as possible.
                   </p>
                 </div>
                 <button
@@ -174,12 +201,11 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
                 </button>
               </div>
             ) : (
-              <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-6">
-                {/* FormSubmit configuration fields */}
-                <input type="hidden" name="_subject" value="New Quote Request — Elite Pour Dynamics Website" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_replyto" value={formData.email} />
+              <form
+                ref={formRef}
+                onSubmit={handleFormSubmit}
+                className="space-y-6"
+              >
                 <div>
                   <div className="inline-flex items-center gap-2.5 mb-3">
                     <span className="block w-5 h-[2px] bg-brand-accent animate-pulse" />
@@ -317,12 +343,11 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
 
                   <input
                     type="file"
-                    name="attachment"
                     multiple
                     ref={fileInputRef}
                     onChange={handleFileChange}
                     className="hidden"
-                    accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
+                    accept=".jpg,.jpeg,.png,.webp"
                   />
 
                   {/* Drag drop zone click card */}
@@ -334,7 +359,7 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
                     <UploadCloud className="h-7 w-7 text-brand-text-dim" />
                     <span className="text-xs text-brand-text-muted font-sans text-center">
                       <span className="text-brand-accent font-bold block mb-0.5">Click to Upload Project Photos</span>
-                      Photos will be sent to the owners via email along with your other details
+                      JPG, PNG, WEBP — direct links included in your quote email
                     </span>
                   </button>
 
@@ -351,7 +376,7 @@ export default function ContactForm({ prefilledQuoteDetails, onClearPrefilledQuo
                             <div className="flex items-center gap-2 truncate">
                               <FileText className="h-4 w-4 text-brand-accent shrink-0" />
                               <span className="truncate text-brand-text">{file.name}</span>
-                              <span className="text-[10px] text-brand-text-muted font-mono">({file.size})</span>
+                              <span className="text-[10px] text-brand-text-muted font-mono">({(file.size / (1024 * 1024)).toFixed(2)} MB)</span>
                             </div>
                             <button
                               type="button"
